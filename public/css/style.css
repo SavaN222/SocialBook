@@ -31,3 +31,12 @@ body {
     font-size: 1.8em;
     margin: 5px;
 }
+.post-card {
+    border-bottom: #162221;
+}
+.border-strong {
+    border-bottom: 3px solid #1AB7EA;
+}
+textarea {
+    resize: none;
+}
