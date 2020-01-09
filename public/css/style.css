@@ -1,9 +1,33 @@
 /*
 * Light Blue = Blue Hex: #1AB7EA;
-* Gray = #162221;
+* Gray-Black = #162221;
 * White = #FFFFFF;
 * Black = #000000;
 */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 body {
     background-color: #FFFFFF;
+}
+.nav-link {
+    color: #FFF !important;
+}
+.nav-link:hover {
+    color: #CCC !important;
+    transition: 0.5s;
+}
+.dropdown {
+    border-left: 2px solid black;
+}
+.nav-profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+.nav-icons {
+    font-size: 1.8em;
+    margin: 5px;
 }

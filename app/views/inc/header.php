@@ -12,6 +12,7 @@
 </head>
 <body>
 <!-- ovde navbar -->
+<?php require APPROOT . '/views/inc/navbar.php'; ?>
 <div class="container">
 
 
