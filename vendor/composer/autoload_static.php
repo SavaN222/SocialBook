@@ -21,7 +21,9 @@ class ComposerStaticInit972b28e65b0bd934cea8868f35ce6dc2
     );
 
     public static $classMap = array (
+        'App\\libraries\\Controller' => __DIR__ . '/../..' . '/app/libraries/Controller.php',
         'App\\libraries\\Core' => __DIR__ . '/../..' . '/app/libraries/Core.php',
+        'App\\libraries\\Database' => __DIR__ . '/../..' . '/app/libraries/Database.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

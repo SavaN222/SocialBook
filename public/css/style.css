@@ -4,3 +4,6 @@
 * White = #FFFFFF;
 * Black = #000000;
 */
+body {
+    background-color: #FFFFFF;
+}
