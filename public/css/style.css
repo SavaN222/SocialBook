@@ -1,6 +1,6 @@
 /*
-* Light Blue = Blue Hex: #1AB7EA;
-* Gray-Black = #162221;
+* Light Blue =  #1AB7EA;
+* Blue hex = #35465d;
 * White = #FFFFFF;
 * Black = #000000;
 */
@@ -12,6 +12,20 @@
 body {
     background-color: #FFFFFF;
 }
+/* COLORS */
+.primary-color {
+    color: #1AB7EA;
+}
+.primary-background {
+    background-color: #1AB7EA;
+}
+.secondary-color {
+    color: #35465d;
+}
+.secondary-background {
+    background-color: #35465d;
+}
+/* Navigation */
 .nav-link {
     color: #FFF !important;
 }
@@ -31,6 +45,7 @@ body {
     font-size: 1.8em;
     margin: 5px;
 }
+/* Pages/index/-Home Page for news fed */
 .post-card {
     border-bottom: #162221;
 }
@@ -39,4 +54,8 @@ body {
 }
 textarea {
     resize: none;
+}
+/* Register/index - registration page*/
+.right-divider {
+    border-right: 3px solid #CCC;
 }

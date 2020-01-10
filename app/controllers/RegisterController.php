@@ -11,7 +11,7 @@ class RegisterController extends Controller
     {
         // model
     }
-
+   
     public function index()
     {
         return $this->view('register/index');
