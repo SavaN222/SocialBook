@@ -1,5 +1,7 @@
 <?php 
+
 use App\libraries\Controller;
+
 class PagesController extends Controller
 {
     public function __construct()
@@ -9,12 +11,7 @@ class PagesController extends Controller
 
     public function index()
     {
-        // $users = $this->pageModel->getNames();
 
-        // $data = [
-        //     'users' => $users
-        // ];
-        
         return $this->view('pages/index');
 
     }

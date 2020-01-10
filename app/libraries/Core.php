@@ -1,5 +1,7 @@
 <?php
+
 namespace App\libraries;
+
 /**
  * App Core Class
  * Creates URL & loads core controller
@@ -44,7 +46,7 @@ class Core
     }
 
     /**
-     * Get url in array [controller, method , params[]];
+     * Get clean url in array [controller, method , params[]];
      * @return array
      */
     public function getUrl()

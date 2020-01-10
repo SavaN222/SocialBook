@@ -1,5 +1,7 @@
 <?php
+
 use App\libraries\Database; 
+
 class Page
 {
     private $db;
