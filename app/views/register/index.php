@@ -6,16 +6,35 @@
         <div class="col-lg-6 right-divider mb-5">
            <img class="w-100 h-100" src="<?php echo URLROOT; ?>/images/registration/registration.jpg" alt="">
         </div>
+
         <div class="col-lg-6">
-            <form action="<?php echo URLROOT; ?>/register/test" method='POST'>
+            <form action="<?php echo URLROOT; ?>/register/create" method='POST'>
                 <div class="form-group">
                     <label for="fname">First Name: </label>
-                    <input type="text" class="form-control" name="fname">
+                    <input type="text" class="form-control" name="fname" 
+                    value="<?php echo isset($data['userData']['fname']) ? 
+                      $data['userData']['fname'] : '';  ?>">
+                     <!-- Name Errors Check -->
+                        <?php if (!empty($data['errors']['errorName'])) { ?>
+                        <div class="alert alert-warning" role='alert'>
+                        <?php echo $data['errors']['errorName']; ?>
+                        </div>
+                        <?php } ?>
                 </div>
+
                   <div class="form-group">
                     <label for="lname">Last Name: </label>
-                    <input type="text" class="form-control" name="lname">
+                    <input type="text" class="form-control" name="lname"
+                    value="<?php echo isset($data['userData']['lname']) ? 
+                      $data['userData']['lname'] : '';  ?>">
+                     <!-- Last Name Errors Check -->
+                        <?php if (!empty($data['errors']['errorLastName'])) { ?>
+                        <div class="alert alert-warning" role='alert'>
+                        <?php echo $data['errors']['errorLastName']; ?>
+                        </div>
+                        <?php } ?>
                 </div>
+
                  <div class="form-group">
                     <label for="gender">Gender: </label>
                     <select name="gender" id="gender" class="form-control">
@@ -24,27 +43,61 @@
                         <option value="female">Female</option>
                         <option value="other">Other</option>
                     </select>
+                     <!-- Gender Errors Check -->
+                        <?php if (!empty($data['errors']['errorGender'])) { ?>
+                        <div class="alert alert-warning" role='alert'>
+                        <?php echo $data['errors']['errorGender']; ?>
+                        </div>
+                        <?php } ?>
                 </div>
+
                   <div class="form-group">
                     <label for="email">Email: </label>
-                    <input type="email" class="form-control" name="email">
+                    <input type="email" class="form-control" name="email"
+                    value="<?php echo isset($data['userData']['email']) ? 
+                      $data['userData']['email'] : '';  ?>">
+                     <!-- Email Errors Check -->
+                        <?php if (!empty($data['errors']['errorEmail'])) { ?>
+                        <div class="alert alert-warning" role='alert'>
+                        <?php echo $data['errors']['errorEmail']; ?>
+                        </div>
+                        <?php } ?>
                 </div>
+
                 <div class="form-group">
                     <label for="password">Password: </label>
                     <input type="password" class="form-control" name="password">
                 </div>
+
                 <div class="form-group">
                     <label for="cpassword">Confirm Password: </label>
                     <input type="password" class="form-control" name="cpassword">
+                     <!-- Passwords Errors Check -->
+                        <?php if (!empty($data['errors']['errorPassword'])) { ?>
+                        <div class="alert alert-warning" role='alert'>
+                        <?php echo $data['errors']['errorPassword']; ?>
+                        </div>
+                        <?php } ?>
                 </div>
+
                  <div class="form-group">
                     <label for="birth">Birth Date: </label>
-                    <input type="date" class="form-control" name="birth">
+                    <input type="date" class="form-control" name="birth"
+                    value="<?php echo isset($data['userData']['birthDate']) ? 
+                      $data['userData']['birthDate'] : '';  ?>">
                 </div>
+                <!-- Birth Date Errors Check -->
+                        <?php if (!empty($data['errors']['errorBirth'])) { ?>
+                        <div class="alert alert-warning" role='alert'>
+                        <?php echo $data['errors']['errorBirth']; ?>
+                        </div>
+                        <?php } ?>
+
                  <div class="form-group">
                     <label for="profilePic">Profile Pic: </label>
                     <input type="file" class="form-control" name="profilePic">
                 </div>
+
                 <hr>
                  <div class="form-group">
                     <div class="row">
@@ -57,6 +110,7 @@
                                 Reset
                             </button>
                         </div>
+
                         <div class="col-lg-7 mb-3">
                             <!-- register with social -->
                             <h4 class="text-info text-center">Register with Social</h4>

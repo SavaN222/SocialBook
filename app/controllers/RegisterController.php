@@ -10,7 +10,7 @@ class RegisterController extends Controller
 {
     public function __construct()
     {
-        // model
+        $this->registerModel = $this->model('Register');
     }
    
     public function index()
@@ -18,17 +18,26 @@ class RegisterController extends Controller
         return $this->view('register/index');
     }
 
-    // public function store()
-    // {
-       
-    // }
-
-    public function test()
+    public function create()
     {
-        $test = RegisterValidation::returnErrors();
-        var_dump($test);
-        exit();
+        if (!isset($_POST['submit'])) {
+            redirect('register');
+        }
+       
+        $errors = RegisterValidation::checkErrors();
+        $userData = RegisterValidation::sanitizeData();
+
+        if (empty($errors)) {
+            $this->registerModel->create($userData);
+        } else {
+            $data = [
+                'errors' => $errors,
+                'userData' => $userData
+            ];
+
+            return $this->view('register/index', $data);
+        }
     }
 
-   
 }
+

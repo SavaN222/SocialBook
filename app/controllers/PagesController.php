@@ -6,7 +6,7 @@ class PagesController extends Controller
 {
     public function __construct()
     {
-        // $this->pageModel = $this->model('Page');
+        
     }
 
     public function index()

@@ -10,22 +10,22 @@ class RegisterValidation
         $errors = [];
 
         if (!empty($data['errorName'])) {
-            $errors[] = $data['errorName'];
+            $errors['errorName'] = $data['errorName'];
         }
         if (!empty($data['errorLastName'])) {
-            $errors[] = $data['errorLastName'];
+            $errors['errorLastName'] = $data['errorLastName'];
         }
         if (!empty($data['errorEmail'])) {
-            $errors[] = $data['errorEmail'];
+            $errors['errorEmail'] = $data['errorEmail'];
         }
         if (!empty($data['errorGender'])) {
-            $errors[] = $data['errorGender'];
+            $errors['errorGender'] = $data['errorGender'];
         }
         if (!empty($data['errorPassword'])) {
-            $errors[] = $data['errorPassword'];
+            $errors['errorPassword'] = $data['errorPassword'];
         }
          if (!empty($data['errorBirth'])) {
-            $errors[] = $data['errorBirth'];
+            $errors['errorBirth'] = $data['errorBirth'];
         }
 
         return $errors;
@@ -65,12 +65,17 @@ class RegisterValidation
 
         // check for passwords
 
-        if (strlen($data['password']) < 6 || strlen($data['cpassword']) < 6) {
-            $data['errorPassword'] = 'Password minimum lenght is 6 char...';
-        }  elseif($data['password'] !== $data['cpassword']) {
-            $data['erorrPassword'] = 'Passowrd must be a same';
-        }
+         if (empty($data['password']) || empty($data['cpassword'])) {
+            $data['errorPassword'] = 'Password cannot be empty';
+         } elseif(strlen($data['password']) < 5 || strlen($data['cpassword']) < 5) {
+            $data['errorPassword'] = 'Password must be longer than 5 char...';
+         }
 
+        if ($data['password'] !== $data['cpassword']) {
+            $data['errorPassword'] = 'Passowrd must be a same';
+        }  
+
+        // check birtth
         if (empty($data['birthDate'])) {
             $data['errorBirth'] = 'Birth Date cannot be empty';
         }
