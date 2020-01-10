@@ -21,6 +21,7 @@ class ComposerStaticInit972b28e65b0bd934cea8868f35ce6dc2
     );
 
     public static $classMap = array (
+        'App\\appclass\\RegisterValidation' => __DIR__ . '/../..' . '/app/appclass/RegisterValidation.php',
         'App\\libraries\\Controller' => __DIR__ . '/../..' . '/app/libraries/Controller.php',
         'App\\libraries\\Core' => __DIR__ . '/../..' . '/app/libraries/Core.php',
         'App\\libraries\\Database' => __DIR__ . '/../..' . '/app/libraries/Database.php',

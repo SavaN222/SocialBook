@@ -7,7 +7,7 @@
            <img class="w-100 h-100" src="<?php echo URLROOT; ?>/images/registration/registration.jpg" alt="">
         </div>
         <div class="col-lg-6">
-            <form action="#">
+            <form action="<?php echo URLROOT; ?>/register/test" method='POST'>
                 <div class="form-group">
                     <label for="fname">First Name: </label>
                     <input type="text" class="form-control" name="fname">
@@ -18,11 +18,11 @@
                 </div>
                  <div class="form-group">
                     <label for="gender">Gender: </label>
-                    <select name="" id="" class="form-control">
-                        <option value="" selected="" disabled="">Chose your gender</option>
-                        <option value="">Male</option>
-                        <option value="">Female</option>
-                        <option value="">Other</option>
+                    <select name="gender" id="gender" class="form-control">
+                        <option value="none" selected="" disabled="">Chose your gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
                     </select>
                 </div>
                   <div class="form-group">
@@ -50,7 +50,7 @@
                     <div class="row">
                         <div class="col-lg-5">
                             <h4 class="text-info text-center">Join us!</h4>
-                            <button type="submit" class="btn btn-success rounded">
+                            <button name="submit" type="submit" class="btn btn-success rounded">
                                 Register
                             </button>
                              <button type="reset" class="btn btn-secondary rounded float-right">
