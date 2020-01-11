@@ -20,7 +20,7 @@
       </li>
       <li class="nav-item dropdown mr-5">
         <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <img class="nav-profile-pic" src="<?php echo URLROOT; ?>/images/cartman.jpg" alt="" > John</a>
+          <img class="nav-profile-pic" src="<?php echo URLROOT; ?>/images/cartman.jpg" alt="" > <?php echo $_SESSION['fname']; ?></a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
           <a class="dropdown-item" href="#">Action</a>
           <a class="dropdown-item" href="#">Another action</a>

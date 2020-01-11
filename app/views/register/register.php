@@ -8,7 +8,7 @@
         </div>
 
         <div class="col-lg-6">
-            <form action="<?php echo URLROOT; ?>/register/create" method='POST'>
+            <form action="<?php echo URLROOT; ?>/register/index" method='POST'>
                 <div class="form-group">
                     <label for="fname">First Name: </label>
                     <input type="text" class="form-control" name="fname" 

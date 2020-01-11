@@ -12,32 +12,29 @@ class RegisterController extends Controller
     {
         $this->registerModel = $this->model('Register');
     }
-   
+   /**
+    * Load register page, if registration invalid load with errors
+    */
     public function index()
     {
-        return $this->view('register/index');
-    }
-
-    public function create()
-    {
         if (!isset($_POST['submit'])) {
-            redirect('register');
+            return $this->view('register/register');
         }
-       
+
         $errors = RegisterValidation::checkErrors();
         $userData = RegisterValidation::sanitizeData();
 
         if (empty($errors)) {
             $this->registerModel->create($userData);
+            redirect('page/login');
         } else {
             $data = [
                 'errors' => $errors,
                 'userData' => $userData
             ];
 
-            return $this->view('register/index', $data);
+            return $this->view('register/register', $data);
         }
     }
-
 }
 

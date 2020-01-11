@@ -6,7 +6,7 @@
                 <img src="<?php echo URLROOT; ?>/images/cartman.jpg" class="card-img-top rounded-circle " alt="...">
           </div>
             <div class="card-body text-center">
-                <h5 class="card-title">Eric Cartman</h5>
+                <h5 class="card-title"><?php echo $_SESSION['fname']; ?></h5>
                 <p class="card-blockquote font-italic">Lorem ipsum.</p>
                 <hr>
                 <p class="card-text"><strong>25k </strong>followers</p>

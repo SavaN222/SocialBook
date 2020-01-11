@@ -31,7 +31,7 @@ class RegisterValidation
         return $errors;
     }
      /**
-     * Form check
+     * Write errors if exsist
      * @return array
      */
     public static function returnErrors()
@@ -83,7 +83,7 @@ class RegisterValidation
         return $data;
     }
     /**
-     * Sanitize data
+     * Sanitize and return clean data
      * @return array
      */
     public static function sanitizeData()

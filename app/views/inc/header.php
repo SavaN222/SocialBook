@@ -12,7 +12,12 @@
 </head>
 <body>
 <!-- ovde navbar -->
-<?php require APPROOT . '/views/inc/navbar.php'; ?>
+
+<?php
+if (isLoggedIn()) {
+    require APPROOT . '/views/inc/navbar.php'; 
+ } 
+?>
 <div class="container">
 
 
