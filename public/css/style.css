@@ -59,3 +59,13 @@ textarea {
 .right-divider {
     border-right: 3px solid #CCC;
 }
+.input-group-prepend span{
+width: 50px;
+background-color: #35465d;
+color: #FFF;
+border:0 !important;
+}
+input:focus, select:focus{
+outline: 0 0 0 0  !important;
+box-shadow: 0 0 0 0 !important;
+}

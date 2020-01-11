@@ -11,6 +11,10 @@
             <form action="<?php echo URLROOT; ?>/register/index" method='POST'>
                 <div class="form-group">
                     <label for="fname">First Name: </label>
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                        </div>
                     <input type="text" class="form-control" name="fname" 
                     value="<?php echo isset($data['userData']['fname']) ? 
                       $data['userData']['fname'] : '';  ?>">
@@ -24,6 +28,10 @@
 
                   <div class="form-group">
                     <label for="lname">Last Name: </label>
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                        </div>
                     <input type="text" class="form-control" name="lname"
                     value="<?php echo isset($data['userData']['lname']) ? 
                       $data['userData']['lname'] : '';  ?>">
@@ -37,6 +45,10 @@
 
                  <div class="form-group">
                     <label for="gender">Gender: </label>
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-venus-mars"></i></span>
+                        </div>
                     <select name="gender" id="gender" class="form-control">
                         <option value="none" selected="" disabled="">Chose your gender</option>
                         <option value="male">Male</option>
@@ -53,6 +65,10 @@
 
                   <div class="form-group">
                     <label for="email">Email: </label>
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                        </div>
                     <input type="email" class="form-control" name="email"
                     value="<?php echo isset($data['userData']['email']) ? 
                       $data['userData']['email'] : '';  ?>">
@@ -66,11 +82,19 @@
 
                 <div class="form-group">
                     <label for="password">Password: </label>
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-key"></i></span>
+                        </div>        
                     <input type="password" class="form-control" name="password">
                 </div>
 
                 <div class="form-group">
                     <label for="cpassword">Confirm Password: </label>
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-key"></i></span>
+                        </div>
                     <input type="password" class="form-control" name="cpassword">
                      <!-- Passwords Errors Check -->
                         <?php if (!empty($data['errors']['errorPassword'])) { ?>
@@ -82,6 +106,10 @@
 
                  <div class="form-group">
                     <label for="birth">Birth Date: </label>
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-calendar"></i></span>
+                        </div>
                     <input type="date" class="form-control" name="birth"
                     value="<?php echo isset($data['userData']['birthDate']) ? 
                       $data['userData']['birthDate'] : '';  ?>">
@@ -95,6 +123,10 @@
 
                  <div class="form-group">
                     <label for="profilePic">Profile Pic: </label>
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-camera"></i></span>
+                        </div>
                     <input type="file" class="form-control" name="profilePic">
                 </div>
 
@@ -103,7 +135,7 @@
                     <div class="row">
                         <div class="col-lg-5">
                             <h4 class="text-info text-center">Join us!</h4>
-                            <button name="submit" type="submit" class="btn btn-success rounded">
+                            <button name="submit" type="submit" class="btn btn-info rounded">
                                 Register
                             </button>
                              <button type="reset" class="btn btn-secondary rounded float-right">
@@ -114,14 +146,14 @@
                         <div class="col-lg-7 mb-3">
                             <!-- register with social -->
                             <h4 class="text-info text-center">Register with Social</h4>
-                            <i class="fab fa-facebook fa-2x text-primary offset-2"></i>
-                            <i class="fab fa-google-plus fa-2x text-danger ml-3"></i>
-                            <i class="fab fa-instagram fa-2x text-warning ml-3"></i>
+                            <i class="fab fa-facebook fa-3x text-primary offset-2"></i>
+                            <i class="fab fa-google-plus fa-3x text-danger ml-3"></i>
+                            <i class="fab fa-instagram fa-3x text-warning ml-3"></i>
                         </div>
-                        <h5 class="text-center alert-danger w-100">Already Have an Account?</h5>
-                          <a href="#" class="text-info page-link bg-dark text-center w-100">
-                                LOGIN...
-                             </a>
+                        <h5 class="text-center alert alert-warning w-100">Already Have an Account?</h5>
+                          <h5 class="text-center alert alert-primary w-100">
+                              <a class="text-dark" href="<?php echo URLROOT; ?>/pages/login">Login..</a>
+                          </h5>
                     </div>
                 </div>
             </form>
