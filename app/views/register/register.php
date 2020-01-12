@@ -1,5 +1,5 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
-
+<div class="container">
 <div class="registration-box">
     <h1 class="text-center secondary-color">Registration</h1>
     <div class="row">
@@ -160,5 +160,5 @@
         </div>
     </div>
 </div>
-
+</div> <!-- container -->
 <?php require APPROOT . '/views/inc/footer.php'; ?>

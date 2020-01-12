@@ -1,5 +1,5 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
-
+<div class="container">
 <div class="registration-box">
     <h1 class="text-center secondary-color">Login</h1>
     <div class="row">
@@ -8,7 +8,7 @@
         </div>
 
         <div class="col-lg-6">
-            <form action="<?php echo URLROOT; ?>/pages/login" method='POST'>
+            <form action="<?php echo URLROOT; ?>/login/login" method='POST'>
                   <div class="form-group">
                     <label for="email">Email: </label>
                     <div class="input-group form-group">
@@ -65,5 +65,5 @@
         </div>
     </div>
 </div>
-
+</div> <!-- container -->
 <?php require APPROOT . '/views/inc/footer.php'; ?>

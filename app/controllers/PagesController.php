@@ -2,51 +2,34 @@
 
 use App\libraries\Controller;
 /**
- * Login and Home page
+ * SocialBook pages-News Feed,Profile
  */
 class PagesController extends Controller
 {
     public function __construct()
     {
-        $this->loginModel = $this->model('Login');
+        // $this->loginModel = $this->model('Login');
     }
     /**
-     *  Home page-SocialBook Feed
+     *  If user loggedin, load home page-news feed
      */
     public function index()
     {
         if (!isLoggedIn()) {
-            redirect('pages/login');
+            redirect('login/login');
         }
-        return $this->view('pages/index');
+        return $this->view('pages/home');
     }
     /**
-     * Set sessions and redirect user to home page if everything is ok
-     * If something goes wrong, load login page with err messages
-     * @return type
+     * If the user watches his profile load pages/myprofile other visitorprofile
+     * @param $id- user id in database from url /profile/5[userID] 
      */
-    public function login()
+    public function profile($id)
     {
-        if (!isset($_POST['submit'])) {
-            return $this->view('pages/login');
-        }
-
-        if ($this->loginModel->userLogin()) {
-            $user = $this->loginModel->userLogin();
-
-            $_SESSION['id'] = $user->id;
-            $_SESSION['fname'] = $user->fname;
-            $_SESSION['lname'] = $user->lname;
-
-            redirect('pages/index');
-
-            // redirect to home page with session data
+        if ($id == $_SESSION['id']) {
+            return $this->view('pages/myprofile');
         } else {
-            $data = [
-                'errorMsg' => 'Try Again!'
-            ];
-            // Load with errors
-            return $this->view('pages/login', $data);
+            return $this->view('pages/visitorprofile');
         }
     }
 

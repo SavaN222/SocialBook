@@ -18,8 +18,4 @@ if (isLoggedIn()) {
     require APPROOT . '/views/inc/navbar.php'; 
  } 
 ?>
-<div class="container">
-
-
-
-     
+   

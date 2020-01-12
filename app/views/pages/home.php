@@ -1,4 +1,5 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
+<div class="container">
 <div class="row p-2">
     <div class="col-lg-3">
         <div class="card">
@@ -64,4 +65,5 @@
         </div>
     </div><!-- col-lg-3 -->
 </div> <!-- row -->
+</div> <!-- container -->
 <?php require APPROOT . '/views/inc/footer.php'; ?>

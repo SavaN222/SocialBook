@@ -26,7 +26,7 @@ class RegisterController extends Controller
 
         if (empty($errors)) {
             $this->registerModel->create($userData);
-            redirect('page/login');
+            redirect('login/login');
         } else {
             $data = [
                 'errors' => $errors,
