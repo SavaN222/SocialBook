@@ -1,6 +1,8 @@
 <?php 
 
 use App\libraries\Controller;
+use App\appclass\UserValidation;
+
 /**
  * SocialBook pages-News Feed,Profile
  */
@@ -8,7 +10,7 @@ class PagesController extends Controller
 {
     public function __construct()
     {
-        // $this->loginModel = $this->model('Login');
+        $this->userModel = $this->model('User');
     }
     /**
      *  If user loggedin, load home page-news feed
@@ -29,8 +31,46 @@ class PagesController extends Controller
         if ($id == $_SESSION['id']) {
             return $this->view('pages/myprofile');
         } else {
-            return $this->view('pages/visitorprofile');
+            $userInfo = $this->userModel->getUserInfo($id);
+            $data = [
+                'fname' => $userInfo->fname,
+                'lname' => $userInfo->lname,
+                'birthDate' => $userInfo->birth_date
+            ];
+            return $this->view('pages/visitorprofile', $data);
         }
+    }
+
+    public function edit()
+    {
+         if (!isset($_POST['submit'])) {
+            return $this->view('pages/editprofile');
+        }
+        $errors = UserValidation::checkErrors();
+        $userData = UserValidation::sanitizeData();
+        $id = $_SESSION['id'];
+
+        if (empty($errors)) {
+            $this->userModel->updateUser($userData, $id);
+            logOut();
+            redirect('login/login');
+        } else {
+            $data = [
+                'errors' => $errors,
+                'userData' => $userData
+            ];
+        return $this->view('pages/editprofile', $data);
+    }
+
+    }
+
+    public function delete()
+    {
+        $id = $_SESSION['id'];
+
+        $this->userModel->deleteUser($id);
+
+        redirect('register/register');   
     }
 
 }
