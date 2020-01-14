@@ -152,7 +152,7 @@
                         </div>
                         <h5 class="text-center alert alert-warning w-100">Already Have an Account?</h5>
                           <h5 class="text-center alert alert-primary w-100">
-                              <a class="text-dark" href="<?php echo URLROOT; ?>/pages/login">Login..</a>
+                              <a class="text-dark" href="<?php echo URLROOT; ?>/login/index">Login..</a>
                           </h5>
                     </div>
                 </div>

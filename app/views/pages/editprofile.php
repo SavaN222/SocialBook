@@ -18,7 +18,7 @@
 </nav>
 <div class="tab-content mt-4" id="nav-tabContent">
   <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-    <form action="<?php echo URLROOT; ?>/pages/edit" method="post">
+    <form action="<?php echo URLROOT; ?>/users/edit" method="post">
       <ul class="list-group">
         <li class="list-group-item">
           <label for="fname">Edit First Name:</label>
@@ -68,7 +68,7 @@
          <button name="submit" class="btn btn-info w-100">UPDATE</button>
         </li>
         <li class="list-group-item">
-         <button onclick="return confirm('Are you sure?');" name="submit" class="btn btn-danger w-100"><a href="<?php echo URLROOT; ?>/pages/delete" class="text-white">DELETE PROFILE</a></button>
+         <button onclick="return confirm('Are you sure?');" name="submit" class="btn btn-danger w-100"><a href="<?php echo URLROOT; ?>/users/delete" class="text-white">DELETE PROFILE</a></button>
         </li>
 </ul>
 </form>

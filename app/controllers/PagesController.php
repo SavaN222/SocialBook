@@ -1,7 +1,6 @@
 <?php 
 
 use App\libraries\Controller;
-use App\appclass\UserValidation;
 
 /**
  * SocialBook pages-News Feed,Profile
@@ -41,36 +40,5 @@ class PagesController extends Controller
         }
     }
 
-    public function edit()
-    {
-         if (!isset($_POST['submit'])) {
-            return $this->view('pages/editprofile');
-        }
-        $errors = UserValidation::checkErrors();
-        $userData = UserValidation::sanitizeData();
-        $id = $_SESSION['id'];
-
-        if (empty($errors)) {
-            $this->userModel->updateUser($userData, $id);
-            logOut();
-            redirect('login/login');
-        } else {
-            $data = [
-                'errors' => $errors,
-                'userData' => $userData
-            ];
-        return $this->view('pages/editprofile', $data);
-    }
-
-    }
-
-    public function delete()
-    {
-        $id = $_SESSION['id'];
-
-        $this->userModel->deleteUser($id);
-
-        redirect('register/register');   
-    }
 
 }
