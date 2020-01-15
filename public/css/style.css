@@ -36,6 +36,12 @@ body {
 .left-divider {
     border-left: 2px solid black;
 }
+/* for listing users*/
+.scrollable-menu {
+    height: auto;
+    max-height: 150px;
+    overflow-x: hidden;
+}
 /* hide left divider for small devices */
 @media screen and (max-width: 770px) {
   .left-divider {

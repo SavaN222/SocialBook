@@ -46,5 +46,22 @@ class User
         
     }
 
+    public function searchUsers($fname, $lname)
+    {
+        $this->db->query('SELECT * FROM users WHERE fname LIKE ? AND lname LIKE ?');
+
+        $fname = trim(htmlspecialchars(strip_tags($fname)));
+        $fname = "%{$fname}%";
+
+        $lname = trim(htmlspecialchars(strip_tags($lname)));
+        $lname = "%{$lname}%";
+
+        $this->db->bind(1, $fname);
+        $this->db->bind(2, $lname);
+
+        $results = $this->db->getAll();
+        return $results;
+    }
 
 }
+

@@ -4,7 +4,7 @@ use App\libraries\Controller;
 use App\appclass\UserValidation;
 
 /**
- * SocialBook pages-News Feed,Profile
+ * UsersController handle EDIT and DELETE profile, and SEARCH method...
  */
 class UsersController extends Controller
 {
@@ -17,7 +17,9 @@ class UsersController extends Controller
     {
        
     }
-
+    /**
+     * Edit PROFILE 
+     */
     public function edit()
     {
          if (!isset($_POST['submit'])) {
@@ -40,7 +42,9 @@ class UsersController extends Controller
     }
 
     }
-
+    /**
+     * Delete Profile
+     */
     public function delete()
     {
         $id = $_SESSION['id'];
@@ -48,6 +52,19 @@ class UsersController extends Controller
         $this->userModel->deleteUser($id);
         logOut();
         redirect('register/register');   
+    }
+    /**
+     * Search USERS method for AJAX CALL
+     * @return JSON
+     */
+    public function getUsers()
+    {
+        $fname = $_GET['fname'];
+        $lname = $_GET['lname'];
+         
+        $users = $this->userModel->searchUsers($fname, $lname);
+        
+        echo json_encode($users);
     }
 
 }

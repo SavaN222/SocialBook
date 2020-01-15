@@ -1,7 +1,9 @@
 <?php
 
 namespace App\appclass;
-
+/**
+ * UserValidation class handle EDIT profile input data
+ */
 class UserValidation
 {
     public static function checkErrors() 

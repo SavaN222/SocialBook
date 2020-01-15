@@ -13,10 +13,15 @@
             <div class="input-group-prepend ml-lg-5">
               <span class="input-group-text bg-white text-info ml-lg-5"><i class="fas fa-search"></i></span>
              </div>
-            <input type="text" class="form-control">
+             <form id="searchForm">
+            <input id="search" type="text" class="form-control" placeholder="Search for users...">
+            </form>
         </div>
+          <ul id="searchResults" class="scrollable-menu list-group" role="menu">
+                </ul>
       </li>
     </ul>
+    
     <ul class="navbar-nav ml-auto align-items-center">
       <li class="nav-item">
         <a class="nav-link" href="#"><i class="fas fa-home nav-icons"></i></a>
