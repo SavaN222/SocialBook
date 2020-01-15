@@ -34,7 +34,8 @@ class PagesController extends Controller
             $data = [
                 'fname' => $userInfo->fname,
                 'lname' => $userInfo->lname,
-                'birthDate' => $userInfo->birth_date
+                'birthDate' => $userInfo->birth_date,
+                'profilePic' => $userInfo->profile_pic
             ];
             return $this->view('pages/visitorprofile', $data);
         }

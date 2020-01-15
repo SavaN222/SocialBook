@@ -3,7 +3,7 @@
 <div class="container-fluid">
   <div class="card">
       <div class="card-header cover-img" style="background-image:url('<?php echo URLROOT; ?>/images/cover.png');">
-          <img src="<?php echo URLROOT; ?>/images/cartman.jpg" class='profile-pic'>
+          <img src="<?php echo URLROOT.'/'.$data['profilePic']; ?>" class='profile-pic'>
           <span class="text-dark text-pic h3">
               <?php echo $data['fname'] . ' ' . $data['lname']; ?>
           </span>          

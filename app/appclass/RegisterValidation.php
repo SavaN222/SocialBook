@@ -2,6 +2,8 @@
 
 namespace App\appclass;
 
+use App\appclass\ImagesValidation;
+
 class RegisterValidation
 {
     public static function checkErrors() 
@@ -24,9 +26,13 @@ class RegisterValidation
         if (!empty($data['errorPassword'])) {
             $errors['errorPassword'] = $data['errorPassword'];
         }
-         if (!empty($data['errorBirth'])) {
+        if (!empty($data['errorBirth'])) {
             $errors['errorBirth'] = $data['errorBirth'];
         }
+        if (!empty($data['errorPic'])) {
+            $errors['errorPic'] = $data['errorPic'];
+        }
+
 
         return $errors;
     }
@@ -80,6 +86,10 @@ class RegisterValidation
             $data['errorBirth'] = 'Birth Date cannot be empty';
         }
 
+        if (empty($data['profilePic'])) {
+            $data['errorPic'] = 'Profile Image must be in JPG/PNG format.';
+        }
+
         return $data;
     }
     /**
@@ -103,6 +113,7 @@ class RegisterValidation
             $password = htmlspecialchars(strip_tags($password));
             $cpassword = htmlspecialchars(strip_tags($cpassword));
             $birthDate = $_POST['birth'];
+            $profilePic = ImagesValidation::uploadProfilePic($_FILES['profilePic']);
             $data = [
                 'fname' => $fname,
                 'lname' => $lname,
@@ -111,12 +122,14 @@ class RegisterValidation
                 'password' => $password,
                 'cpassword' => $cpassword,
                 'birthDate' => $birthDate,
+                'profilePic' => $profilePic,
                 'errorName' => '',
                 'errorLastName' => '',
                 'errorEmail' => '',
                 'errorGender' => '',
                 'errorPassword' => '',
-                'errorBirth' => ''
+                'errorBirth' => '',
+                'errorPic' => ''
             ];
         }
 

@@ -31,6 +31,7 @@ class UsersController extends Controller
 
         if (empty($errors)) {
             $this->userModel->updateUser($userData, $id);
+            unlink(URLROOT . '/images/profile' . $_SESSION['profilePic']);
             logOut();
             redirect('login/login');
         } else {

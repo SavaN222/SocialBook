@@ -8,7 +8,7 @@
         </div>
 
         <div class="col-lg-6">
-            <form action="<?php echo URLROOT; ?>/register/index" method='POST'>
+            <form enctype="multipart/form-data" action="<?php echo URLROOT; ?>/register/index" method='POST'>
                 <div class="form-group">
                     <label for="fname">First Name: </label>
                     <div class="input-group form-group">
@@ -18,13 +18,13 @@
                     <input type="text" class="form-control" name="fname" 
                     value="<?php echo isset($data['userData']['fname']) ? 
                       $data['userData']['fname'] : '';  ?>">
-                     <!-- Name Errors Check -->
+                </div>
+                <!-- Name Errors Check -->
                         <?php if (!empty($data['errors']['errorName'])) { ?>
                         <div class="alert alert-warning" role='alert'>
                         <?php echo $data['errors']['errorName']; ?>
                         </div>
                         <?php } ?>
-                </div>
 
                   <div class="form-group">
                     <label for="lname">Last Name: </label>
@@ -35,13 +35,13 @@
                     <input type="text" class="form-control" name="lname"
                     value="<?php echo isset($data['userData']['lname']) ? 
                       $data['userData']['lname'] : '';  ?>">
-                     <!-- Last Name Errors Check -->
+                </div>
+                <!-- Last Name Errors Check -->
                         <?php if (!empty($data['errors']['errorLastName'])) { ?>
                         <div class="alert alert-warning" role='alert'>
                         <?php echo $data['errors']['errorLastName']; ?>
                         </div>
                         <?php } ?>
-                </div>
 
                  <div class="form-group">
                     <label for="gender">Gender: </label>
@@ -55,13 +55,13 @@
                         <option value="female">Female</option>
                         <option value="other">Other</option>
                     </select>
-                     <!-- Gender Errors Check -->
+                </div>
+                 <!-- Gender Errors Check -->
                         <?php if (!empty($data['errors']['errorGender'])) { ?>
                         <div class="alert alert-warning" role='alert'>
                         <?php echo $data['errors']['errorGender']; ?>
                         </div>
                         <?php } ?>
-                </div>
 
                   <div class="form-group">
                     <label for="email">Email: </label>
@@ -96,13 +96,13 @@
                             <span class="input-group-text"><i class="fas fa-key"></i></span>
                         </div>
                     <input type="password" class="form-control" name="cpassword">
-                     <!-- Passwords Errors Check -->
+                </div>
+                <!-- Passwords Errors Check -->
                         <?php if (!empty($data['errors']['errorPassword'])) { ?>
                         <div class="alert alert-warning" role='alert'>
                         <?php echo $data['errors']['errorPassword']; ?>
                         </div>
                         <?php } ?>
-                </div>
 
                  <div class="form-group">
                     <label for="birth">Birth Date: </label>
@@ -129,6 +129,12 @@
                         </div>
                     <input type="file" class="form-control" name="profilePic">
                 </div>
+                 <!-- Picture Errors Check -->
+                        <?php if (!empty($data['errors']['errorPic'])) { ?>
+                        <div class="alert alert-warning" role='alert'>
+                        <?php echo $data['errors']['errorPic']; ?>
+                        </div>
+                        <?php } ?>
 
                 <hr>
                  <div class="form-group">

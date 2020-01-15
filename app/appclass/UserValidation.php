@@ -1,6 +1,9 @@
 <?php
 
 namespace App\appclass;
+
+use App\appclass\ImagesValidation;
+
 /**
  * UserValidation class handle EDIT profile input data
  */
@@ -21,8 +24,11 @@ class UserValidation
         if (!empty($data['errorPassword'])) {
             $errors['errorPassword'] = $data['errorPassword'];
         }
-         if (!empty($data['errorBirth'])) {
+        if (!empty($data['errorBirth'])) {
             $errors['errorBirth'] = $data['errorBirth'];
+        }
+        if (!empty($data['errorPic'])) {
+            $errors['errorPic'] = $data['errorPic'];
         }
 
         return $errors;
@@ -63,6 +69,10 @@ class UserValidation
             $data['errorBirth'] = 'Birth Date cannot be empty';
         }
 
+        if (empty($data['profilePic'])) {
+            $data['errorPic'] = 'Profile Image must be in JPG/PNG format.';
+        }
+
         return $data;
     }
     /**
@@ -81,15 +91,18 @@ class UserValidation
             $lname = htmlspecialchars(strip_tags($lname));
             $password = htmlspecialchars(strip_tags($password));
             $birthDate = $_POST['birthDate'];
+            $profilePic = ImagesValidation::uploadProfilePic($_FILES['profilePic']);
             $data = [
                 'fname' => $fname,
                 'lname' => $lname,
                 'password' => $password,
                 'birthDate' => $birthDate,
+                'profilePic' => $profilePic,
                 'errorName' => '',
                 'errorLastName' => '',
                 'errorPassword' => '',
-                'errorBirth' => ''
+                'errorBirth' => '',
+                'errorPic' => ''
             ];
         }
 

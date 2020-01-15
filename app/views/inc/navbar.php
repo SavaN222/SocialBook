@@ -38,7 +38,7 @@
       <li class="nav-item left-divider ml-2">
         <div class="dropdown show">
   <a class="dropdown text-white mr-5" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    <img class="ml-1 nav-profile-pic" src="<?php echo URLROOT; ?>/images/cartman.jpg" alt="" > <?php echo $_SESSION['fname']; ?></a>
+    <img class="ml-1 nav-profile-pic" src="<?php echo URLROOT.'/'.$_SESSION['profilePic']; ?>" alt="" > <?php echo $_SESSION['fname']; ?></a>
   </a>
 
   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">

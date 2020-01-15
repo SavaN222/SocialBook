@@ -3,7 +3,7 @@
 <div class="container-fluid">
   <div class="card">
       <div class="card-header cover-img" style="background-image:url('<?php echo URLROOT; ?>/images/cover.png');">
-          <img src="<?php echo URLROOT; ?>/images/cartman.jpg" class='profile-pic'>
+          <img src="<?php echo URLROOT.'/'.$_SESSION['profilePic']; ?>" class='profile-pic'>
           <span class="text-dark text-pic h3">
               <?php echo $_SESSION['fname'] . ' ' . $_SESSION['lname']; ?>
           </span>
@@ -18,7 +18,7 @@
 </nav>
 <div class="tab-content mt-4" id="nav-tabContent">
   <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-    <form action="<?php echo URLROOT; ?>/users/edit" method="post">
+    <form enctype="multipart/form-data" action="<?php echo URLROOT; ?>/users/edit" method="post">
       <ul class="list-group">
         <li class="list-group-item">
           <label for="fname">Edit First Name:</label>
@@ -62,7 +62,8 @@
         </li>
         <li class="list-group-item">
           <label for="profilePicture">Change Profile Picture</label>
-          <input type="file" name="profilePicture">
+          <input type="file" class="form-control" name="profilePic" 
+          value="<?php echo $_SESSION['profilePic']; ?>">
         </li>
          <li class="list-group-item">
          <button name="submit" class="btn btn-info w-100">UPDATE</button>

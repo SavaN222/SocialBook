@@ -4,7 +4,7 @@
     <div class="col-lg-3">
         <div class="card">
             <div class="card-header bg-info">
-                <img src="<?php echo URLROOT; ?>/images/cartman.jpg" class="card-img-top rounded-circle " alt="...">
+                <img src="<?php echo URLROOT.'/'.$_SESSION['profilePic']; ?>" class="card-img-top rounded " alt="...">
           </div>
             <div class="card-body text-center">
                 <h5 class="card-title"><?php echo $_SESSION['fname']; ?></h5>

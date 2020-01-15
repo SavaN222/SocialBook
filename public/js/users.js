@@ -27,8 +27,11 @@ function searchUsers(e)
 
             for (var i in users) {
                 output += 
-                '<li class="list-group-item"> Name: '+users[i].fname+ 
-                ' ' +users[i].lname + '</li>';
+                '<li class="list-group-item">' +
+                '<a href="http://localhost/socialbook/pages/profile/'+users[i].id+'">'+
+                '<img class="img-thumbnail search-img" src="http://localhost/socialbook/'
+                +users[i].profile_pic+'"> Name: '+users[i].fname+ 
+                ' ' +users[i].lname + '</a></li>';
             }
             document.getElementById('searchResults').innerHTML = output;
         }
