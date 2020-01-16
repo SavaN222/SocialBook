@@ -4,6 +4,11 @@ namespace App\appclass;
 
 class ImagesValidation
 {
+    /**
+     * Check if image jpg or png and give image unique name
+     * @param $_FILES $img 
+     * @return string filePath
+     */
     public static function uploadProfilePic($img)
     {
         $filePath = '';
