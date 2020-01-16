@@ -25,9 +25,9 @@
   <li class="list-group-item d-flex justify-content-between align-items-center">
     Birth Date: <?php echo $_SESSION['birthDate']; ?>
   </li>
-  <li class="list-group-item d-flex justify-content-between align-items-center">
-    Ukupno Prijatelja
-    <span class="badge badge-primary badge-pill">32</span>
+  <li class="list-group-item align-items-center">
+    Total Friends:
+    <span class="badge badge-primary badge-pill"> 32</span>
   </li>
   <li class="list-group-item d-flex justify-content-between align-items-center">
     <button class="btn btn-info w-100"><a class="text-white" href="<?php echo URLROOT; ?>/users/edit">Edit Profile</a></button>
@@ -66,7 +66,7 @@
             25 <i class="far fa-thumbs-up text-primary fa-lg mr-3"></i> 
         </a>
         <a class="bg-white text-secondary" data-toggle="collapse" href="#collapseExample1" role="button" aria-expanded="false" aria-controls="#collapseExample1">
-            <i class="fas fa-comment"></i> Comment 15
+            <i class="fas fa-comment"></i> Comments 0
         </a>
     </div>
   </div>
@@ -87,7 +87,7 @@
             <i class="far fa-thumbs-up text-primary fa-lg mr-3"></i> 
         </a>
         <a class="bg-white text-secondary" data-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample2">
-            View Comments...
+            <i class="fas fa-comment"></i> Comments 2
         </a>
         <!-- comments -->
   <div class="collapse" id="collapseExample2">

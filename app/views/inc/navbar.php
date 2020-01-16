@@ -24,7 +24,7 @@
     
     <ul class="navbar-nav ml-auto align-items-center">
       <li class="nav-item">
-        <a class="nav-link" href="#"><i class="fas fa-home nav-icons"></i></a>
+        <a class="nav-link" href="<?php echo URLROOT; ?>/pages/home"><i class="fas fa-home nav-icons"></i></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#"><i class="fas fa-envelope nav-icons"></i></a>

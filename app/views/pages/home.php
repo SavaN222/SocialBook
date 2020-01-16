@@ -22,7 +22,7 @@
     <div class="col-lg-6"> 
         <div class="card">
             <div class="card-body border-strong">
-                <p class="card-text text-primary text-center">O cemu razmisljas?</p>
+                <p class="card-text text-primary text-center">Say something...</p>
                 <form action="">
                     <div class="form-group">
                         <textarea name="" id="" class="form-control"></textarea>
