@@ -20,7 +20,7 @@
     </div> <!-- col-lg-3 -->
 
     <div class="col-lg-6"> 
-        <div class="card">
+        <div class="card mb-3">
             <div class="card-body border-strong">
                 <p class="card-text text-primary text-center">Say something...</p>
                 <form action="">
@@ -42,6 +42,72 @@
 
         </form>
                     
+            </div>
+        </div>
+
+        <div class="posts py-3">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="friend_info border border-primary rounded">
+                    <div class="card-header d-flex justify-content-between">
+                    <div class="friend_data">
+                    <img class="rounded-circle post-profile-pic p-2" src="<?php echo URLROOT; ?>/images/profile/rohan-g-hdzBDVVsRT4-unsplash1579107981.jpg" alt=""> 
+                    <strong class="text-info">John Doe</strong>
+                    <small class="text-gray-dark font-italic">23.12.2020</small>
+                    </div>
+                    <div class="dots">
+                        <i class="fas fa-ellipsis-v"></i>
+                    </div>
+                    </div> <!-- card header -->
+
+                    <div class="card">
+                        <div class="card-body">
+                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit incidunt provident iusto animi non nam iste. Minus error aliquid est.</p>
+                        </div>
+                        <div class="card-footer d-flex justify-content-between align-items-center">
+                            <a href="#">
+                                20 <i class="far fa-thumbs-up text-primary fa-lg mr-3"></i> 
+                            </a>
+                            <a href="#">
+                                <i class="fas fa-comment"></i> Comments 2
+                            </a>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+          <div class="posts py-3">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="friend_info border border-primary rounded">
+                    <div class="card-header d-flex justify-content-between">
+                    <div class="friend_data">
+                    <img class="rounded-circle post-profile-pic p-2" src="<?php echo URLROOT; ?>/images/profile/rohan-g-hdzBDVVsRT4-unsplash1579107981.jpg" alt=""> 
+                    <strong class="text-info">John Doe</strong>
+                    <small class="text-gray-dark font-italic">23.12.2020</small>
+                    </div>
+                    <div class="dots">
+                        <i class="fas fa-ellipsis-v"></i>
+                    </div>
+                    </div> <!-- card header -->
+
+                    <div class="card">
+                        <div class="card-body">
+                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit incidunt provident iusto animi non nam iste. Minus error aliquid est.</p>
+                        </div>
+                        <div class="card-footer d-flex justify-content-between align-items-center">
+                            <a href="#">
+                                20 <i class="far fa-thumbs-up text-primary fa-lg mr-3"></i> 
+                            </a>
+                            <a href="#">
+                                <i class="fas fa-comment"></i> Comments 2
+                            </a>
+                        </div>
+                    </div>
+                    </div>
+                </div>
             </div>
         </div>
         
