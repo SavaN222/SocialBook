@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jan 17, 2020 at 01:45 AM
+-- Generation Time: Jan 17, 2020 at 05:05 PM
 -- Server version: 5.7.26
 -- PHP Version: 7.2.18
 
@@ -34,9 +34,9 @@ CREATE TABLE IF NOT EXISTS `comments` (
   `user_id` int(11) NOT NULL,
   `post_id` int(11) NOT NULL,
   `description` varchar(255) NOT NULL,
-  `date_added` datetime NOT NULL,
+  `date_added` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=53 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -68,13 +68,14 @@ CREATE TABLE IF NOT EXISTS `posts` (
   `comments_id` int(11) DEFAULT NULL,
   `likes` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `posts`
 --
 
 INSERT INTO `posts` (`id`, `user_id`, `description`, `image`, `date_added`, `comments_id`, `likes`) VALUES
+(23, 19, 'WOW, NOW WE HAVE COMMENTS!\r\nWrite some comment to test this functionality', NULL, '2020-01-17 14:56:25', NULL, NULL),
 (22, 18, 'New features on this site is too good, #goodJob', NULL, '2020-01-17 02:43:44', NULL, NULL),
 (20, 19, 'I\'am new on this social media.\r\nSend me a friend request :D ', NULL, '2020-01-17 01:15:25', NULL, NULL),
 (19, 18, 'SocialBook is amazing website..', NULL, '2020-01-17 01:14:21', NULL, NULL);

@@ -76,11 +76,28 @@
                             <a href="#">
                                 20 <i class="far fa-thumbs-up text-primary fa-lg mr-3"></i> 
                             </a>
-                            <a href="">View posts</a>
-                            <a href="#"><i class="fas fa-comment"></i>
-                                 Comments 2
+                            <form id="commentsForm<?php echo $data['post']->id; ?>">
+                            <a class="btn text-info" data-toggle="collapse" href="#commentBox<?php echo $data['post']->id; ?>" role="button" aria-expanded="false" aria-controls="commentBox<?php echo $data['post']->id; ?>">
+                                 <button class="btn commentShow" name="postId" value="<?php echo $data['post']->id; ?>">
+                                <i class="fas fa-comment"></i>
+                                    Comments 2
+                                 </button>
                             </a>
+                            </form>
                         </div>
+                            <!-- comments -->
+                                <div class="collapse" id="commentBox<?php echo $data['post']->id; ?>">
+                                    <div id="commentsOutput<?php echo $data['post']->id;?>">
+                                    </div>
+                                <form class="d-flex justify-content-between commentForm">
+                                    <textarea id="commentText<?php echo $data['post']->id; ?>" name="description" class="form-control description" 
+                                    placeholder="<?php echo $_SESSION['fname'] . ' ' . $_SESSION['lname']; ?> write a comment..."></textarea>
+                                    <button type="submit" class="btn sendcom" name="postId" value="<?php echo $data['post']->id;?>">
+                    <i class="fab fa-telegram fa-3x text-info"></i>
+                    </button>
+                                </form>
+                                </div> 
+                            <!-- End comments -->
                     </div>
                     </div>
                 </div>

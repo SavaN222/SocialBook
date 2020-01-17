@@ -16,11 +16,27 @@ class PostsController extends Controller
      */
     public function create()
     {
-        $description = PostsValidation::sanitizePost();
+        $description = PostsValidation::sanitizeDescription();
 
         $this->postModel->addPost($_SESSION['id'], $description);
 
         redirect('pages/home');
+    }
+
+    public function add()
+    {
+        $description = PostsValidation::sanitizeDescription();
+
+        $this->postModel->addComment($_SESSION['id'], $_POST['postId'], $description);
+
+        redirect('pages/home');
+    }
+
+    public function get()
+    {
+        $comments = $this->postModel->getCommentsForPosts($_GET['postId']);
+        
+        echo json_encode($comments);
     }
     
 }

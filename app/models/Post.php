@@ -46,4 +46,30 @@ class Post
 
         return $results;
     }
+
+    public function addComment($userId, $postId, $description)
+    {
+        $this->db->query('INSERT INTO comments(user_id, post_id, description)
+            VALUES(:userId, :postId, :description)');
+
+        $this->db->bind(':userId', $userId);
+        $this->db->bind(':postId', $postId);
+        $this->db->bind(':description', $description);
+
+        $this->db->execute();
+    }
+
+    public function getCommentsForPosts($id)
+    {
+        $this->db->query('SELECT u.fname, u.lname, u.profile_pic, c.description, c.date_added, c.user_id FROM comments c JOIN users u ON c.user_id = u.id 
+            WHERE post_id=:id 
+            ORDER BY c.date_added ASC');
+
+        $this->db->bind(':id', $id);
+
+        $results = $this->db->getAll();
+
+        return $results;
+    }
+
 }

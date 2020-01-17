@@ -97,6 +97,10 @@ box-shadow: 0 0 0 0 !important;
 .more {
     display: none;
 }
+.comment-profile-pic {
+    width: 50px !important;
+    height: 50px !important;
+}
 /* FOR larg screen */
 @media screen and (min-width: 1000px) {
  .profile-pic {
