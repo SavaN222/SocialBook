@@ -35,15 +35,21 @@ class PagesController extends Controller
      */
     public function profile($id)
     {
+        $userPosts = $this->postModel->getUserPosts($id);
+        
         if ($id == $_SESSION['id']) {
-            return $this->view('pages/myprofile');
+            $data = [
+                'posts' => $userPosts
+        ];
+           return $this->view('pages/myprofile', $data);
         } else {
             $userInfo = $this->userModel->getUserInfo($id);
             $data = [
                 'fname' => $userInfo->fname,
                 'lname' => $userInfo->lname,
                 'birthDate' => $userInfo->birth_date,
-                'profilePic' => $userInfo->profile_pic
+                'profilePic' => $userInfo->profile_pic,
+                'posts' => $userPosts
             ];
             return $this->view('pages/visitorprofile', $data);
         }

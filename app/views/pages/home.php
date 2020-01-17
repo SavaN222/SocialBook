@@ -76,8 +76,9 @@
                             <a href="#">
                                 20 <i class="far fa-thumbs-up text-primary fa-lg mr-3"></i> 
                             </a>
-                            <a href="#">
-                                <i class="fas fa-comment"></i> Comments 2
+                            <a href="">View posts</a>
+                            <a href="#"><i class="fas fa-comment"></i>
+                                 Comments 2
                             </a>
                         </div>
                     </div>
@@ -85,7 +86,7 @@
                 </div>
             </div>
         </div>
-        <?php endforeach ?>;
+        <?php endforeach; ?>
         
     </div><!-- col-lg-6 -->
 
@@ -107,5 +108,6 @@
         </div>
     </div><!-- col-lg-3 -->
 </div> <!-- row -->
+
 </div> <!-- container -->
 <?php require APPROOT . '/views/inc/footer.php'; ?>

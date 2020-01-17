@@ -24,9 +24,23 @@ class Post
 
     public function getPosts()
     {
-        $this->db->query('SELECT p.description, p.user_id, p.date_added, u.fname, u.lname, u.profile_pic FROM posts p JOIN users u ON
+        $this->db->query('SELECT p.description, p.user_id, p.id, p.date_added, u.fname, u.lname, u.profile_pic FROM posts p JOIN users u ON
         p.user_id = u.id 
          ORDER BY date_added DESC LIMIT 0, 5');
+
+        $results = $this->db->getAll();
+
+        return $results;
+    }
+
+    public function getUserPosts($id)
+    {
+        $this->db->query('SELECT p.description, p.user_id, p.id, p.date_added, u.fname, u.lname, u.profile_pic FROM posts p JOIN users u ON
+            p.user_id = u.id 
+         WHERE p.user_id = :id 
+         ORDER BY date_added DESC LIMIT 0, 5');
+
+        $this->db->bind(':id', $id);
 
         $results = $this->db->getAll();
 
