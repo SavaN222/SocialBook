@@ -23,9 +23,9 @@
         <div class="card mb-3">
             <div class="card-body border-strong">
                 <p class="card-text text-primary text-center">Say something...</p>
-                <form action="">
+                <form id="postForm" method="POST" action="<?php echo URLROOT; ?>/posts/create">
                     <div class="form-group">
-                        <textarea name="" id="" class="form-control"></textarea>
+                        <textarea id="desc" name="description" class="form-control"></textarea>
                     </div>
                 <div class="form-icons d-flex ">
                     <div class="form-group">
@@ -34,7 +34,7 @@
                         </button>
                 </div>
                 <div class="form-group ml-auto">
-                    <button type="submit" class="btn">
+                    <button id="sendBtn" type="submit" class="btn" name="submit">
                     <i class="fab fa-telegram fa-3x text-info"></i>
                     </button>
                 </div>
@@ -44,16 +44,22 @@
                     
             </div>
         </div>
-
-        <div class="posts py-3">
+        <?php foreach($data['posts'] as $data['post']): ?>
+             <div class="posts py-3">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="friend_info border border-primary rounded">
                     <div class="card-header d-flex justify-content-between">
                     <div class="friend_data">
-                    <img class="rounded-circle post-profile-pic p-2" src="<?php echo URLROOT; ?>/images/profile/rohan-g-hdzBDVVsRT4-unsplash1579107981.jpg" alt=""> 
-                    <strong class="text-info">John Doe</strong>
-                    <small class="text-gray-dark font-italic">23.12.2020</small>
+                    <img class="rounded-circle post-profile-pic p-2" src="<?php echo URLROOT; ?>/<?php echo $data['post']->profile_pic; ?>" alt=""> 
+                    <strong class="text-info">
+                        <a href="<?php echo URLROOT; ?>/pages/profile/<?php echo $data['post']->user_id; ?>">
+                        <?php echo $data['post']->fname . ' ' . $data['post']->lname; ?>
+                        </a>
+                    </strong>
+                    <small class="text-gray-dark font-italic">
+                        <?php echo $data['post']->date_added; ?>
+                    </small>
                     </div>
                     <div class="dots">
                         <i class="fas fa-ellipsis-v"></i>
@@ -62,7 +68,9 @@
 
                     <div class="card">
                         <div class="card-body">
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit incidunt provident iusto animi non nam iste. Minus error aliquid est.</p>
+                            <p class="card-text">
+                                <?php echo $data['post']->description; ?>
+                            </p>
                         </div>
                         <div class="card-footer d-flex justify-content-between align-items-center">
                             <a href="#">
@@ -77,39 +85,7 @@
                 </div>
             </div>
         </div>
-
-          <div class="posts py-3">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="friend_info border border-primary rounded">
-                    <div class="card-header d-flex justify-content-between">
-                    <div class="friend_data">
-                    <img class="rounded-circle post-profile-pic p-2" src="<?php echo URLROOT; ?>/images/profile/rohan-g-hdzBDVVsRT4-unsplash1579107981.jpg" alt=""> 
-                    <strong class="text-info">John Doe</strong>
-                    <small class="text-gray-dark font-italic">23.12.2020</small>
-                    </div>
-                    <div class="dots">
-                        <i class="fas fa-ellipsis-v"></i>
-                    </div>
-                    </div> <!-- card header -->
-
-                    <div class="card">
-                        <div class="card-body">
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit incidunt provident iusto animi non nam iste. Minus error aliquid est.</p>
-                        </div>
-                        <div class="card-footer d-flex justify-content-between align-items-center">
-                            <a href="#">
-                                20 <i class="far fa-thumbs-up text-primary fa-lg mr-3"></i> 
-                            </a>
-                            <a href="#">
-                                <i class="fas fa-comment"></i> Comments 2
-                            </a>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <?php endforeach ?>;
         
     </div><!-- col-lg-6 -->
 

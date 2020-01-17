@@ -10,6 +10,7 @@ class PagesController extends Controller
     public function __construct()
     {
         $this->userModel = $this->model('User');
+        $this->postModel = $this->model('Post');
     }
     /**
      *  If user loggedin, load home page-news feed
@@ -19,7 +20,14 @@ class PagesController extends Controller
         if (!isLoggedIn()) {
             redirect('login/login');
         }
-        return $this->view('pages/home');
+
+        $posts = $this->postModel->getPosts();
+
+        $data = [
+            'posts' => $posts
+        ];
+
+        return $this->view('pages/home', $data);
     }
     /**
      * If the user watches his profile load pages/myprofile other visitorprofile
