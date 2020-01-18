@@ -3,7 +3,7 @@
 use App\libraries\Controller;
 use App\appclass\PostsValidation;
 /**
- * PostsController for new posts,likes and comments
+ * PostsController for POSTS AND COMMENTS
  */
 class PostsController extends Controller
 {
@@ -22,21 +22,22 @@ class PostsController extends Controller
 
         redirect('pages/home');
     }
-
+    /**
+     * Add new comment ajax
+     */
     public function add()
     {
         $description = PostsValidation::sanitizeDescription();
 
         $this->postModel->addComment($_SESSION['id'], $_POST['postId'], $description);
-
-        redirect('pages/home');
     }
-
+    /**
+     * Get new comments LIVE ajax
+     */
     public function get()
     {
         $comments = $this->postModel->getCommentsForPosts($_GET['postId']);
         
         echo json_encode($comments);
     }
-    
 }

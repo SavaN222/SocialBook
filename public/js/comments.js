@@ -3,7 +3,9 @@ var commentShow = document.getElementsByClassName('commentShow'); // button
 for (let i = 0; i < commentShow.length; i++) {
     commentShow[i].addEventListener('click', loadComments);
 }
-
+/**
+* Load comment
+*/
 function loadComments(e)
 {
     e.preventDefault();
@@ -38,7 +40,9 @@ function loadComments(e)
 
     xhr.send();
 }
-
+/**
+* When user post new comment, this function is called.
+*/
 function liveLoadComments(postId)
 {
     var xhr = new XMLHttpRequest();
@@ -76,7 +80,9 @@ var description = document.getElementsByClassName('description'); // textarea
 for (let i = 0; i < commentForm.length; i++) {
     commentForm[i].addEventListener('click', addComment);
 }
-
+/**
+* Add new coment
+*/
 function addComment(e)
 {
     e.preventDefault();
@@ -111,7 +117,7 @@ function addComment(e)
 
 
 
-
+/* VIEW MORE text on click */
 
 // var dots = document.getElementsByClassName('dots');
 // var moreText = document.getElementsByClassName('more');

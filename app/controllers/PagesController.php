@@ -11,6 +11,7 @@ class PagesController extends Controller
     {
         $this->userModel = $this->model('User');
         $this->postModel = $this->model('Post');
+        $this->galleryModel = $this->model('Gallery');
     }
     /**
      *  If user loggedin, load home page-news feed
@@ -36,12 +37,14 @@ class PagesController extends Controller
     public function profile($id)
     {
         $userPosts = $this->postModel->getUserPosts($id);
+        $userGallery = $this->galleryModel->getPictures($id);
         
         if ($id == $_SESSION['id']) {
             $data = [
-                'posts' => $userPosts
+                'posts' => $userPosts,
+                'gallery' => $userGallery
         ];
-           return $this->view('pages/myprofile', $data);
+            return $this->view('pages/myprofile', $data);
         } else {
             $userInfo = $this->userModel->getUserInfo($id);
             $data = [
@@ -49,11 +52,10 @@ class PagesController extends Controller
                 'lname' => $userInfo->lname,
                 'birthDate' => $userInfo->birth_date,
                 'profilePic' => $userInfo->profile_pic,
-                'posts' => $userPosts
+                'posts' => $userPosts,
+                'gallery' => $userGallery
             ];
             return $this->view('pages/visitorprofile', $data);
         }
     }
-
-
 }

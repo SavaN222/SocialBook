@@ -36,19 +36,15 @@
 </ul>
   </div>
   <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-        <div class="row">
-        <div class="col-lg-3">
-            <img src="<?php echo URLROOT; ?>/images/cartman.jpg" alt="..." class="img-thumbnail">
+       <div class="row">
+       <?php foreach($data['gallery'] as $data['photo']): ?>
+        <div class="col-lg-4">
+            <img src="<?php echo URLROOT; ?>/<?php echo $data['photo']->photo; ?>" alt="..." class="img-thumbnail">
+            <p class="gallery-desc border border-secondary rounded">
+              <?php echo $data['photo']->description;?>
+            </p>
         </div>
-        <div class="col-lg-3">
-            <img src="<?php echo URLROOT; ?>/images/cartman.jpg" alt="..." class="img-thumbnail">
-        </div>
-        <div class="col-lg-3">
-            <img src="<?php echo URLROOT; ?>/images/cartman.jpg" alt="..." class="img-thumbnail">
-        </div>
-        <div class="col-lg-3">
-            <img src="<?php echo URLROOT; ?>/images/cartman.jpg" alt="..." class="img-thumbnail">
-        </div>
+       <?php endforeach; ?>
     </div>
   </div>
   <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
@@ -84,18 +80,34 @@
                             <a href="#">
                                 20 <i class="far fa-thumbs-up text-primary fa-lg mr-3"></i> 
                             </a>
-                            <a href="#">View posts</a>
-                            <a href="#"><i class="fas fa-comment"></i>
-                                 Comments 2
+                            <form id="commentsForm<?php echo $data['post']->id; ?>">
+                            <a class="btn text-info" data-toggle="collapse" href="#commentBox<?php echo $data['post']->id; ?>" role="button" aria-expanded="false" aria-controls="commentBox<?php echo $data['post']->id; ?>">
+                                 <button class="btn commentShow" name="postId" value="<?php echo $data['post']->id; ?>">
+                                <i class="fas fa-comment"></i>
+                                    Comments
+                                 </button>
                             </a>
+                            </form>
                         </div>
+                            <!-- comments -->
+                                <div class="collapse" id="commentBox<?php echo $data['post']->id; ?>">
+                                    <div id="commentsOutput<?php echo $data['post']->id;?>">
+                                    </div>
+                                <form class="d-flex justify-content-between commentForm">
+                                    <textarea id="commentText<?php echo $data['post']->id; ?>" name="description" class="form-control description" 
+                                    placeholder="<?php echo $_SESSION['fname'] . ' ' . $_SESSION['lname']; ?> write a comment..."></textarea>
+                                    <button type="submit" class="btn sendcom" name="postId" value="<?php echo $data['post']->id;?>">
+                    <i class="fab fa-telegram fa-3x text-info"></i>
+                    </button>
+                                </form>
+                                </div> 
+                            <!-- End comments -->
                     </div>
                     </div>
                 </div>
             </div>
         </div>
         <?php endforeach; ?>
-    
   </div>
 </div> <!-- container -->
 

@@ -28,11 +28,6 @@
                         <textarea id="desc" name="description" class="form-control"></textarea>
                     </div>
                 <div class="form-icons d-flex ">
-                    <div class="form-group">
-                         <button type="submit" class="btn">
-                         <i class="fas fa-camera fa-3x text-info"></i>
-                        </button>
-                </div>
                 <div class="form-group ml-auto">
                     <button id="sendBtn" type="submit" class="btn" name="submit">
                     <i class="fab fa-telegram fa-3x text-info"></i>
@@ -80,7 +75,7 @@
                             <a class="btn text-info" data-toggle="collapse" href="#commentBox<?php echo $data['post']->id; ?>" role="button" aria-expanded="false" aria-controls="commentBox<?php echo $data['post']->id; ?>">
                                  <button class="btn commentShow" name="postId" value="<?php echo $data['post']->id; ?>">
                                 <i class="fas fa-comment"></i>
-                                    Comments 2
+                                    Comments
                                  </button>
                             </a>
                             </form>
