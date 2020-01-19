@@ -13,6 +13,7 @@ function isLoggedIn()
             return false;
         }
 }
+
 /**
  * Unset all session and logOut user
  */

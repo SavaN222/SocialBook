@@ -77,8 +77,17 @@
                         <?php echo $data['post']->date_added; ?>
                     </small>
                     </div>
-                    <div class="dots">
+                    <div class="dots ">
+                      <a class="btn dropdown-toggle" href="#" role="button" id="postControl" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-ellipsis-v"></i>
+                        </a>
+                        <!-- dropdown controls -->
+                        <div class="dropdown-menu" aria-labelledby="postControl">
+                          <a class="dropdown-item" href="#">Edit Post</a>
+                          <a class="dropdown-item" href="<?php echo URLROOT; ?>/posts/deletePost/<?php echo $data['post']->id;?>">
+                          Delete Post
+                        </a>
+                        </div>
                     </div>
                     </div> <!-- card header -->
 

@@ -13,6 +13,7 @@ class PagesController extends Controller
         $this->postModel = $this->model('Post');
         $this->galleryModel = $this->model('Gallery');
     }
+
     /**
      *  If user loggedin, load home page-news feed
      */
@@ -30,6 +31,7 @@ class PagesController extends Controller
 
         return $this->view('pages/home', $data);
     }
+    
     /**
      * If the user watches his profile load pages/myprofile other visitorprofile
      * @param $id- user id in database from url /profile/5[userID] 

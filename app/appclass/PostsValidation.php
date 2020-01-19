@@ -4,10 +4,10 @@ namespace App\appclass;
 
 class PostsValidation
 {
-    /**
-     * Sanitize description for comment and post
-     * @return type
-     */
+  /**
+   * Sanitize description for comment and post
+   * @return type
+   */
    public static function sanitizeDescription()
    {
         if (isset($_POST['description'])) {

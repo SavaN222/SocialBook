@@ -20,6 +20,7 @@ class UsersController extends Controller
     /**
      * Edit PROFILE 
      */
+
     public function edit()
     {
          if (!isset($_POST['submit'])) {
@@ -46,6 +47,7 @@ class UsersController extends Controller
     /**
      * Delete Profile
      */
+    
     public function delete()
     {
         $id = $_SESSION['id'];

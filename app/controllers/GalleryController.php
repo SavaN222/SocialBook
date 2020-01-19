@@ -11,6 +11,7 @@ class GalleryController extends Controller
     {
         $this->galleryModel = $this->model('Gallery');
     }
+
     /**
      * Add new photo
      */
@@ -22,6 +23,7 @@ class GalleryController extends Controller
 
         redirect('pages/profile/' . $_SESSION['id']);
     }
+    
     /**
      * Delete photo from gallery
      */

@@ -2,6 +2,7 @@
 
 use App\libraries\Controller;
 use App\appclass\PostsValidation;
+
 /**
  * PostsController for POSTS AND COMMENTS
  */
@@ -11,6 +12,7 @@ class PostsController extends Controller
     {
         $this->postModel = $this->model('Post');
     }
+
     /**
      * Create new post
      */
@@ -22,6 +24,7 @@ class PostsController extends Controller
 
         redirect('pages/home');
     }
+
     /**
      * Add new comment ajax
      */
@@ -31,6 +34,7 @@ class PostsController extends Controller
 
         $this->postModel->addComment($_SESSION['id'], $_POST['postId'], $description);
     }
+
     /**
      * Get new comments LIVE ajax
      */
@@ -39,5 +43,15 @@ class PostsController extends Controller
         $comments = $this->postModel->getCommentsForPosts($_GET['postId']);
         
         echo json_encode($comments);
+    }
+
+    /**
+     * User delete post
+     */
+    public function deletePost($id)
+    {
+        $this->postModel->deletePost($_SESSION['id'], $id);
+
+        redirect('pages/index');
     }
 }

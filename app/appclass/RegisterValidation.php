@@ -36,6 +36,7 @@ class RegisterValidation
 
         return $errors;
     }
+    
      /**
      * Write errors if exsist
      * @return array
@@ -92,6 +93,7 @@ class RegisterValidation
 
         return $data;
     }
+
     /**
      * Sanitize and return clean data
      * @return array

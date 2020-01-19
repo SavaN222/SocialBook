@@ -10,6 +10,7 @@ class LoginController extends Controller
     {
         $this->loginModel = $this->model('Login');
     }
+
     /**
      *  Login page
      */
@@ -17,6 +18,7 @@ class LoginController extends Controller
     {
         return $this->view('login/login');
     }
+
     /**
      * Logout user and redirect to login
      */
@@ -25,6 +27,7 @@ class LoginController extends Controller
         logOut();
         redirect('login/login');
     }
+    
     /**
      * Set sessions and redirect user to home page if everything is ok
      * If something goes wrong, load login page with err messages

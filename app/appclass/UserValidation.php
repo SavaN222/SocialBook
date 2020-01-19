@@ -33,6 +33,7 @@ class UserValidation
 
         return $errors;
     }
+
      /**
      * Write errors if exsist
      * @return array
@@ -75,6 +76,7 @@ class UserValidation
 
         return $data;
     }
+    
     /**
      * Sanitize and return clean data
      * @return array

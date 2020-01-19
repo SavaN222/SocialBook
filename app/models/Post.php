@@ -72,4 +72,14 @@ class Post
         return $results;
     }
 
+    public function deletePost($userId, $postId)
+    {
+        $this->db->query('DELETE FROM posts WHERE user_id=:userId AND id=:postId');
+
+        $this->db->bind(':userId', $userId);
+        $this->db->bind(':postId', $postId);
+
+        $this->db->execute();
+    }
+
 }
