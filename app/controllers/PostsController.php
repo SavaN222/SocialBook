@@ -54,4 +54,25 @@ class PostsController extends Controller
 
         redirect('pages/index');
     }
+
+     public function editProfile($id) 
+     {
+        $userPosts = $this->postModel->getUserPosts($id);
+        
+        if ($id == $_SESSION['id']) {
+            $data = [
+                'posts' => $userPosts
+        ];
+            return $this->view('pages/editpost', $data);
+        } 
+    }
+
+     public function updatePost($id)
+    {
+        $description = PostsValidation::sanitizeDescription();
+
+        $this->postModel->updatePost($_SESSION['id'], $id, $description);
+
+        redirect('pages/home');
+    }
 }

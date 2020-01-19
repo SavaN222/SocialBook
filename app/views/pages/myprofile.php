@@ -83,7 +83,7 @@
                         </a>
                         <!-- dropdown controls -->
                         <div class="dropdown-menu" aria-labelledby="postControl">
-                          <a class="dropdown-item" href="#">Edit Post</a>
+                          <a class="dropdown-item" href="<?php echo URLROOT; ?>/posts/editProfile/<?php echo $_SESSION['id']; ?>">Edit Post</a>
                           <a class="dropdown-item" href="<?php echo URLROOT; ?>/posts/deletePost/<?php echo $data['post']->id;?>">
                           Delete Post
                         </a>

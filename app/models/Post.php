@@ -82,4 +82,15 @@ class Post
         $this->db->execute();
     }
 
+    public function updatePost($userId, $postId, $description)
+    {
+        $this->db->query('UPDATE posts SET description=:description WHERE user_id=:userId and id=:postId');
+
+        $this->db->bind(':userId', $userId);
+        $this->db->bind(':postId', $postId);
+        $this->db->bind(':description', $description);
+
+        $this->db->execute();
+    }
+
 }

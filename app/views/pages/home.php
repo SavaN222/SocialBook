@@ -56,9 +56,6 @@
                         <?php echo $data['post']->date_added; ?>
                     </small>
                     </div>
-                    <div class="dots">
-                        <i class="fas fa-ellipsis-v"></i>
-                    </div>
                     </div> <!-- card header -->
 
                     <div class="card">
