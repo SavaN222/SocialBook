@@ -5,9 +5,8 @@ namespace App\appclass;
 class GalleryValidation
 {
     /**
-     * Check if image jpg or png and give image unique name
-     * @param $_FILES $img 
-     * @return string filePath
+     * Sanitize and return description and picture for gallery
+     * @return array data
      */
     public static function sanitizeData()
     {
@@ -22,6 +21,11 @@ class GalleryValidation
         }
         return $data;
     }
+     /**
+     * Check if image jpg or png and give image unique name
+     * @param $_FILES $img 
+     * @return string filePath
+     */
     public static function galleryPhoto($img)
     {
         $filePath = '';

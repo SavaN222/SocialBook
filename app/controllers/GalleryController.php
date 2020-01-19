@@ -3,7 +3,7 @@
 use App\libraries\Controller;
 use App\appclass\GalleryValidation;
 /**
- * PostsController for POSTS AND COMMENTS
+ * GalleryController for myprofile gallery
  */
 class GalleryController extends Controller
 {
@@ -18,17 +18,17 @@ class GalleryController extends Controller
     {
         $data = GalleryValidation::sanitizeData();
 
-        $this->galleryModel->addPicture($_SESSION['id'], $data['photo'], $data['description']);
+        $this->galleryModel->addPhoto($_SESSION['id'], $data['photo'], $data['description']);
 
         redirect('pages/profile/' . $_SESSION['id']);
     }
     /**
-     * Get new comments LIVE ajax
+     * Delete photo from gallery
      */
-    public function get()
+    public function delete($id)
     {
-        $comments = $this->postModel->getCommentsForPosts($_GET['postId']);
-        
-        echo json_encode($comments);
+        $this->galleryModel->deletePhoto($_SESSION['id'], $id);
+
+        redirect('pages/profile/' . $_SESSION['id']);
     }
 }

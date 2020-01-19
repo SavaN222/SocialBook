@@ -48,10 +48,13 @@
         <div class="row">
        <?php foreach($data['gallery'] as $data['photo']): ?>
         <div class="col-lg-4">
+          <a href="<?php echo URLROOT;?>/gallery/delete/<?php echo $data['photo']->id;?>">
+        <i class="fas fa-trash fa-2x text-danger" data-toggle="tooltip" data-placement="right" title="Delete Photo"></i>
+          </a>
             <img src="<?php echo URLROOT; ?>/<?php echo $data['photo']->photo; ?>" alt="..." class="img-thumbnail">
             <p class="gallery-desc border border-secondary rounded">
               <?php echo $data['photo']->description;?>
-            </p>
+            </p>            
         </div>
        <?php endforeach; ?>
     </div>

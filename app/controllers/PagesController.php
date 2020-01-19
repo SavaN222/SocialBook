@@ -37,7 +37,7 @@ class PagesController extends Controller
     public function profile($id)
     {
         $userPosts = $this->postModel->getUserPosts($id);
-        $userGallery = $this->galleryModel->getPictures($id);
+        $userGallery = $this->galleryModel->getPhotos($id);
         
         if ($id == $_SESSION['id']) {
             $data = [
