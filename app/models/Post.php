@@ -50,10 +50,12 @@ class Post
 
     public function getUserPosts($id)
     {
-        $this->db->query('SELECT p.description, p.user_id, p.id, p.date_added, u.fname, u.lname, u.profile_pic FROM posts p JOIN users u ON
-            p.user_id = u.id 
-         WHERE p.user_id = :id 
-         ORDER BY date_added DESC LIMIT 0, 5');
+        $this->db->query('SELECT count(l.id) as likes, p.description, p.user_id, p.id, p.date_added, u.fname, u.lname, u.profile_pic FROM (( posts p JOIN users u ON
+            p.user_id = u.id)
+             LEFT JOIN likes l ON p.id = l.post_id)
+             WHERE p.user_id = :id 
+             GROUP BY p.id
+             ORDER BY date_added DESC LIMIT 0, 5');
 
         $this->db->bind(':id', $id);
 
@@ -111,6 +113,16 @@ class Post
     public function likePost($userId, $postId)
     {
         $this->db->query('INSERT INTO likes(user_id, post_id) VALUES(:userId, :postId)');
+
+        $this->db->bind(':userId', $userId);
+        $this->db->bind(':postId', $postId);
+
+        $this->db->execute();
+    }
+
+    public function dislikePost($userId, $postId)
+    {
+        $this->db->query('DELETE FROM likes WHERE user_id = :userId AND post_id = :postId');
 
         $this->db->bind(':userId', $userId);
         $this->db->bind(':postId', $postId);

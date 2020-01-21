@@ -67,7 +67,7 @@
                         <div class="card-footer d-flex justify-content-between align-items-center">
                             <form class="likeForm">
                                 <button class="btn likeBtn" value="<?php echo $data['post']->id;?>">
-                                    <span id="likeTxt<?php echo $data['post']->id;?>" class="text-info"><?php echo $data['post']->likes; ?></span>
+                                    <span data-liked='false' id="likeTxt<?php echo $data['post']->id;?>" class="text-info"><?php echo $data['post']->likes; ?></span>
                                     <i class="far fa-thumbs-up text-primary fa-lg mr-3"></i>
                                 </button>
                             </form>

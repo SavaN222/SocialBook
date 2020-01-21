@@ -16,15 +16,19 @@ for (var i = 0; i < likeBtn.length; i++) {
     xhr.onload = function() {
         if (this.status == 200) {
             var obj = JSON.parse(this.responseText);
-
-            document.getElementById('likeTxt' + postId).innerHTML = obj.likes;
+            if (obj.likes == undefined) {
+                var likes = document.getElementById('likeTxt' + postId).innerHTML;
+                document.getElementById('likeTxt' + postId).innerHTML = likes - 1;
+            } else {
+                document.getElementById('likeTxt' + postId).innerHTML = obj.likes;
+            }
         }
     }
 
     xhr.send();
 }
     /**
-    * User like post, call method likePost
+    * LIKE/DISLIKE post
     */
     function addLike(e)
     {
@@ -32,12 +36,23 @@ for (var i = 0; i < likeBtn.length; i++) {
 
         var postId = this.value;
 
+        var spanLike = document.getElementById('likeTxt' + postId);
+        var checkLike = spanLike.dataset.liked;
+
         var params = "postId="+postId;
 
         var xhr = new XMLHttpRequest();
 
-        xhr.open('POST', 'http://localhost/socialbook/posts/likePost', true);
-        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        if (checkLike == 'false') {
+            xhr.open('POST', 'http://localhost/socialbook/posts/likePost', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            spanLike.dataset.liked = 'true';
+        } else {
+            xhr.open('POST', 'http://localhost/socialbook/posts/dislikePost', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            spanLike.dataset.liked = 'false';
+        }
+        
 
         xhr.onload = function() {
             if (this.status == 200) {

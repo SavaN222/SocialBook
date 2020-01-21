@@ -91,6 +91,14 @@ class PostsController extends Controller
     }
 
     /**
+     * Dislike post ajax live
+     */
+    public function dislikePost()
+    {
+        $this->postModel->dislikePost($_SESSION['id'], $_POST['postId']);
+    }
+
+    /**
      * Get total number of likes for post
      */
     public function loadLikeForPost()

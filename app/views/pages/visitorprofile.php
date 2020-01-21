@@ -77,9 +77,12 @@
                             </p>
                         </div>
                         <div class="card-footer d-flex justify-content-between align-items-center">
-                            <a href="#">
-                                20 <i class="far fa-thumbs-up text-primary fa-lg mr-3"></i> 
-                            </a>
+                            <form class="likeForm">
+                                <button class="btn likeBtn" value="<?php echo $data['post']->id;?>">
+                                    <span data-liked='false' id="likeTxt<?php echo $data['post']->id;?>" class="text-info"><?php echo $data['post']->likes; ?></span>
+                                    <i class="far fa-thumbs-up text-primary fa-lg mr-3"></i>
+                                </button>
+                            </form>
                             <form id="commentsForm<?php echo $data['post']->id; ?>">
                             <a class="btn text-info" data-toggle="collapse" href="#commentBox<?php echo $data['post']->id; ?>" role="button" aria-expanded="false" aria-controls="commentBox<?php echo $data['post']->id; ?>">
                                  <button class="btn commentShow" name="postId" value="<?php echo $data['post']->id; ?>">
