@@ -24,13 +24,28 @@ class Post
 
     public function getPosts()
     {
-        $this->db->query('SELECT p.description, p.user_id, p.id, p.date_added, u.fname, u.lname, u.profile_pic FROM posts p JOIN users u ON
-        p.user_id = u.id 
+        $this->db->query('SELECT count(l.id) as likes, p.description, p.user_id, p.id, p.date_added, u.fname, u.lname, u.profile_pic FROM (( posts p JOIN users u ON
+        p.user_id = u.id)
+        LEFT JOIN likes l ON p.id = l.post_id)
+         GROUP BY p.id
          ORDER BY date_added DESC LIMIT 0, 5');
 
         $results = $this->db->getAll();
 
         return $results;
+    }
+
+    public function getLikesForPost($postId)
+    {
+        $this->db->query('SELECT l.post_id, count(l.id) as likes FROM likes l
+            WHERE post_id = :postId
+            GROUP BY l.post_id');
+
+        $this->db->bind(':postId', $postId);
+
+        $result = $this->db->getSingle();
+
+        return $result;
     }
 
     public function getUserPosts($id)
@@ -89,6 +104,16 @@ class Post
         $this->db->bind(':userId', $userId);
         $this->db->bind(':postId', $postId);
         $this->db->bind(':description', $description);
+
+        $this->db->execute();
+    }
+
+    public function likePost($userId, $postId)
+    {
+        $this->db->query('INSERT INTO likes(user_id, post_id) VALUES(:userId, :postId)');
+
+        $this->db->bind(':userId', $userId);
+        $this->db->bind(':postId', $postId);
 
         $this->db->execute();
     }

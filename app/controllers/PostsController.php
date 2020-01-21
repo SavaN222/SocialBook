@@ -55,6 +55,9 @@ class PostsController extends Controller
         redirect('pages/index');
     }
 
+    /**
+     * Edit user profile
+     */
      public function editProfile($id) 
      {
         $userPosts = $this->postModel->getUserPosts($id);
@@ -67,6 +70,9 @@ class PostsController extends Controller
         } 
     }
 
+    /**
+     * Update User post
+     */
      public function updatePost($id)
     {
         $description = PostsValidation::sanitizeDescription();
@@ -74,5 +80,23 @@ class PostsController extends Controller
         $this->postModel->updatePost($_SESSION['id'], $id, $description);
 
         redirect('pages/home');
+    }
+
+    /**
+     * Like post ajax live
+     */
+    public function likePost()
+    {
+        $this->postModel->likePost($_SESSION['id'], $_POST['postId']);
+    }
+
+    /**
+     * Get total number of likes for post
+     */
+    public function loadLikeForPost()
+    {
+        $likes = $this->postModel->getLikesForPost($_GET['postId']);
+
+        echo json_encode($likes);
     }
 }

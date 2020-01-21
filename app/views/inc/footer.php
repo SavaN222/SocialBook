@@ -11,6 +11,6 @@
 <!-- Main JS -->
 <script src="<?php echo URLROOT; ?>/js/comments.js"></script>
 <script src="<?php echo URLROOT; ?>/js/users.js"></script>
- <!-- IF you wanna to add post without reloading just add include /js/posts.js -->
+<script src="<?php echo URLROOT; ?>/js/likes.js"></script>
 </body>
 </html>
