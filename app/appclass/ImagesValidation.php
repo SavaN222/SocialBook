@@ -19,7 +19,7 @@ class ImagesValidation
         $imageNameArray = explode('.', $img['name']);
         $imageExtension = end($imageNameArray);
 
-        $imageName = $imageNameArray[0] . round(microtime(true)) . '.' . $imageExtension;
+        $imageName = $imageNameArray[0] . round(microtime(true)).'.'.$imageExtension;
 
         if (in_array($imageExtension, $allowedExtension) && 
             in_array($img['type'], $allowedTypes)) {
