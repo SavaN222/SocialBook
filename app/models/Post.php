@@ -28,13 +28,18 @@ class Post
         $this->db->execute();
     }
 
-    public function getPosts()
+    public function getPosts($id)
     {
         $this->db->query('SELECT count(l.id) as likes, p.description, p.user_id, p.id, p.date_added, u.fname, u.lname, u.profile_pic FROM (( posts p JOIN users u ON
         p.user_id = u.id)
         LEFT JOIN likes l ON p.id = l.post_id)
+        JOIN friends f ON (p.user_id = f.friend_id OR p.user_id = f.user_id)
+        WHERE (f.user_id = :id OR f.friend_id = :id) AND f.status = "2"
          GROUP BY p.id
          ORDER BY date_added DESC LIMIT 0, 5');
+
+        $this->db->bind(':id', $id);
+        $this->db->bind(':id', $id);
 
         $results = $this->db->getAll();
 

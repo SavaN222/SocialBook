@@ -12,6 +12,7 @@ class PagesController extends Controller
         $this->userModel = $this->model('User');
         $this->postModel = $this->model('Post');
         $this->galleryModel = $this->model('Gallery');
+        $this->friendModel = $this->model('Friend');
     }
 
     /**
@@ -23,10 +24,14 @@ class PagesController extends Controller
             redirect('login/login');
         }
 
-        $posts = $this->postModel->getPosts();
+        $posts = $this->postModel->getPosts($_SESSION['id']);
+        $friendRequest = $this->friendModel->checkForRequest($_SESSION['id']);
+        $countFriendRequest = $this->friendModel->countFriendRequest($_SESSION['id']);
 
         $data = [
-            'posts' => $posts
+            'posts' => $posts,
+            'friendRequests' => $friendRequest,
+            'countFriendRequest' => $countFriendRequest
         ];
 
         return $this->view('pages/home', $data);
@@ -40,24 +45,33 @@ class PagesController extends Controller
     {
         $userPosts = $this->postModel->getUserPosts($id);
         $userGallery = $this->galleryModel->getPhotos($id);
-        
+        $friendRequest = $this->friendModel->checkForRequest($_SESSION['id']);
+        $countFriendRequest = $this->friendModel->countFriendRequest($_SESSION['id']);
+
         if ($id == $_SESSION['id']) {
             $data = [
                 'posts' => $userPosts,
-                'gallery' => $userGallery
+                'gallery' => $userGallery,
+                'friendRequests' => $friendRequest,
+                'countFriendRequest' => $countFriendRequest
         ];
             return $this->view('pages/myprofile', $data);
             
         } else {
             $userInfo = $this->userModel->getUserInfo($id);
+
             $data = [
+                'id' => $userInfo->id,
                 'fname' => $userInfo->fname,
                 'lname' => $userInfo->lname,
                 'birthDate' => $userInfo->birth_date,
                 'profilePic' => $userInfo->profile_pic,
                 'posts' => $userPosts,
-                'gallery' => $userGallery
+                'gallery' => $userGallery,
+                'friendRequests' => $friendRequest,
+                'countFriendRequest' => $countFriendRequest
             ];
+
             return $this->view('pages/visitorprofile', $data);
         }
     }

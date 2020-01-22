@@ -145,7 +145,7 @@ box-shadow: 0 0 0 0 !important;
 }
 }
 /* Search Fix*/
-.search-img {
+.search-img, .friendRequest-img {
     width: 50px !important;
     height: 50px !important;
     border-radius: 50% !important;

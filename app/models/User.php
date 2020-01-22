@@ -16,16 +16,16 @@ class User
         $this->db = new Database();
     }
 
-    public function getUserInfo($id)
-    {
-        $this->db->query('SELECT * FROM users where id=:id');
+     public function getUserInfo($id)
+     {
+        $this->db->query('SELECT * FROM users WHERE id=:id');
 
         $this->db->bind(':id', $id);
         
         $result = $this->db->getSingle();
 
         return $result;
-    }
+     } 
 
     public function updateUser($userData, $id)
     {

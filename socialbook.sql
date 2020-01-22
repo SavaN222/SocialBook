@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jan 18, 2020 at 01:35 PM
+-- Generation Time: Jan 22, 2020 at 11:40 PM
 -- Server version: 5.7.26
 -- PHP Version: 7.2.18
 
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `comments` (
   `description` varchar(255) NOT NULL,
   `date_added` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=62 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=64 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `comments`
@@ -56,6 +56,33 @@ INSERT INTO `comments` (`id`, `user_id`, `post_id`, `description`, `date_added`)
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `friends`
+--
+
+DROP TABLE IF EXISTS `friends`;
+CREATE TABLE IF NOT EXISTS `friends` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `friend_id` int(11) NOT NULL,
+  `status` enum('0','1','2','') NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `user_id` (`user_id`,`friend_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `friends`
+--
+
+INSERT INTO `friends` (`id`, `user_id`, `friend_id`, `status`) VALUES
+(4, 18, 20, '2'),
+(5, 19, 20, '2'),
+(6, 23, 18, '2'),
+(7, 23, 19, '2'),
+(18, 18, 19, '2');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `gallery`
 --
 
@@ -66,7 +93,7 @@ CREATE TABLE IF NOT EXISTS `gallery` (
   `photo` varchar(255) NOT NULL,
   `description` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `gallery`
@@ -86,9 +113,18 @@ DROP TABLE IF EXISTS `likes`;
 CREATE TABLE IF NOT EXISTS `likes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
-  `posts_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `post_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `user_id` (`user_id`,`post_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=43 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `likes`
+--
+
+INSERT INTO `likes` (`id`, `user_id`, `post_id`) VALUES
+(34, 19, 23),
+(40, 18, 25);
 
 -- --------------------------------------------------------
 
@@ -106,7 +142,7 @@ CREATE TABLE IF NOT EXISTS `posts` (
   `comments_id` int(11) DEFAULT NULL,
   `likes` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `posts`
@@ -116,9 +152,9 @@ INSERT INTO `posts` (`id`, `user_id`, `description`, `image`, `date_added`, `com
 (25, 20, 'Check out my awesome gallery, AW AW!', NULL, '2020-01-18 14:30:49', NULL, NULL),
 (24, 20, 'AW AW AW!!', NULL, '2020-01-18 13:21:20', NULL, NULL),
 (23, 19, 'WOW, NOW WE HAVE COMMENTS!\r\nWrite some comment to test this functionality', NULL, '2020-01-17 14:56:25', NULL, NULL),
-(22, 18, 'New features on this site is too good, #goodJob', NULL, '2020-01-17 02:43:44', NULL, NULL),
+(22, 18, 'New features on this site is too good, #goodJobTeam', NULL, '2020-01-17 02:43:44', NULL, NULL),
 (20, 19, 'I\'am new on this social media.\r\nSend me a friend request :D ', NULL, '2020-01-17 01:15:25', NULL, NULL),
-(19, 18, 'SocialBook is amazing website..', NULL, '2020-01-17 01:14:21', NULL, NULL);
+(28, 23, 'I am new on this social network', NULL, '2020-01-22 20:46:24', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -138,7 +174,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `profile_pic` varchar(255) DEFAULT NULL,
   `cover_pic` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `users`
@@ -147,6 +183,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 INSERT INTO `users` (`id`, `fname`, `lname`, `gender`, `email`, `password`, `birth_date`, `profile_pic`, `cover_pic`) VALUES
 (19, 'Nevena', 'Nenic', 'female', 'nena@gmail.com', '$2y$10$uetmutwotXgYnfMJcDRB6ePGDdVEjMPT9mCHOccIoBn0rlTTZr.vK', '1999-12-23', 'images/profile/michael-dam-mEZ3PoFGs_k-unsplash1579108028.jpg', NULL),
 (20, 'Talking', 'Dog', 'other', 'dog@gmail.com', '$2y$10$AbdcMZ6bYcnjXk72LAoQXeUNC3Tudr3LhcCes5e54HYK8THC2L8h6', '1992-07-17', 'images/profile/img1579350058.jpg', NULL),
+(23, 'John', 'Doe', 'male', 'jdoe@gmail.com', '$2y$10$yqxxZMFR8vqNtYs1Y/HqzOtP7SQf2TC8ha5BlrOzoepgAkOX7LGt2', '2002-05-12', 'images/profile/mali1579722303.png', NULL),
 (18, 'Mirko', 'Mirkovic', 'male', 'mirko@gmail.com', '$2y$10$7jAuRhtIwn7Ivzo9u9LiYOyTG1IzOAnQb9kPusAD4ua5w/7q.tY62', '1998-09-18', 'images/profile/rohan-g-hdzBDVVsRT4-unsplash1579107981.jpg', NULL);
 COMMIT;
 

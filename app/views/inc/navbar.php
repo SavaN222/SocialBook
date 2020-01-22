@@ -35,7 +35,34 @@
         <a class="nav-link" href="#"><i class="fas fa-globe-americas nav-icons"></i></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#"><i class="fas fa-user-friends nav-icons"></i></a>
+        <div class="dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="friendDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-user-friends nav-icons">
+          </i><span class="badge badge-light">
+            <?php echo $data['countFriendRequest']->total; ?>
+          </span>
+        </a>
+          <div class="dropdown-menu" aria-labelledby="friendDropdown">
+            <?php foreach ($data['friendRequests'] as $data['friendRequest']): ?>
+              <a class="dropdown-item mr-5" 
+              href="<?php echo URLROOT; ?>/pages/profile/<?php echo $data['friendRequest']->id; ?>">
+             <img class="img-thumbnail friendRequest-img" src="<?php echo URLROOT;?>/<?php echo $data['friendRequest']->profile_pic; ?>"> 
+             <?php echo $data['friendRequest']->fname . ' ' . $data['friendRequest']->lname; ?>
+            </a>
+            <form>
+              <div class="form-group d-flex justify-content-between">
+                <button class="btn btn-info btn-sm">
+                <a class="text-white" href="<?php echo URLROOT; ?>/friends/accept/<?php echo $data['friendRequest']->id ?>">Accept</a>
+              </button>
+                <button class="btn btn-danger btn-sm">
+                <a class="text-white" href="<?php echo URLROOT; ?>/friends/decline/<?php echo $data['friendRequest']->id ?>">Decline</a>
+              </button>
+              </div>
+            </form>
+            <hr>
+            <?php endforeach; ?>
+          </div>
+        </div>
       </li>
       <li class="nav-item left-divider ml-2">
         <div class="dropdown show">

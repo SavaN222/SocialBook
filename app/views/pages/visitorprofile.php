@@ -30,10 +30,13 @@
     <span class="badge badge-primary badge-pill">32</span>
   </li>
   <li class="list-group-item d-flex justify-content-between align-items-center">
-      <button class="btn btn-info">Add Friend</button>    
+      <button type="button" class="btn btn-info"><a class="text-white" 
+        href="<?php echo  URLROOT;?>/friends/sendFriendRequest/<?php echo $data['id']; ?>" >
+      Send Request</a></button>   
       <button class="btn btn-info">Send Message</button>    
   </li>
 </ul>
+
   </div>
   <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
        <div class="row">
