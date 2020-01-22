@@ -53,7 +53,6 @@ for (var i = 0; i < likeBtn.length; i++) {
             spanLike.dataset.liked = 'false';
         }
         
-
         xhr.onload = function() {
             if (this.status == 200) {
                 liveLoadLikes(postId);

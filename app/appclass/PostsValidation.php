@@ -6,7 +6,7 @@ class PostsValidation
 {
   /**
    * Sanitize description for comment and post
-   * @return type
+   * @return string
    */
    public static function sanitizeDescription()
    {

@@ -2,6 +2,9 @@
 
 use App\libraries\Database; 
 
+/**
+ * Register new user
+ */
 class Register
 {
     private $db;
@@ -13,7 +16,6 @@ class Register
 
     public function create($userData)
     {
-
         $this->db->query('INSERT INTO users(fname,lname,gender,email,password,birth_date,profile_pic)
             VALUES(:fname, :lname, :gender, :email, :password, :birth_date, :profilePic)');
 
@@ -24,9 +26,7 @@ class Register
         $this->db->bind(':password',password_hash($userData['password'], PASSWORD_BCRYPT));
         $this->db->bind(':birth_date', $userData['birthDate']);
         $this->db->bind(':profilePic', $userData['profilePic']);
+
         $this->db->execute();
-
     }
-
-
 }

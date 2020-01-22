@@ -15,7 +15,6 @@ class RegisterController extends Controller
    /**
     * Load register page, if registration invalid load with errors
     */
-   
     public function index()
     {
         if (!isset($_POST['submit'])) {
@@ -38,4 +37,3 @@ class RegisterController extends Controller
         }
     }
 }
-

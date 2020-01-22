@@ -6,6 +6,10 @@ namespace App\appclass;
  */
 class LoginValidation
 {
+    /**
+     * Sanitize input data for login
+     * @return array $data
+     */
     public static function sanitizeData()
     {
         if (isset($_POST['submit'])) {

@@ -2,6 +2,9 @@
 
 use App\libraries\Database; 
 
+/**
+ * Gallery class handle: insert new photo, get user photos and delete photo. 
+ */
 class Gallery
 {
     private $db;
@@ -43,5 +46,4 @@ class Gallery
 
         $this->db->execute();
     }
-
 }

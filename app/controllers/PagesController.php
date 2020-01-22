@@ -34,7 +34,7 @@ class PagesController extends Controller
     
     /**
      * If the user watches his profile load pages/myprofile other visitorprofile
-     * @param $id- user id in database from url /profile/5[userID] 
+     * @param $id- user id in database from url example: /profile/5(userID) 
      */
     public function profile($id)
     {
@@ -47,6 +47,7 @@ class PagesController extends Controller
                 'gallery' => $userGallery
         ];
             return $this->view('pages/myprofile', $data);
+            
         } else {
             $userInfo = $this->userModel->getUserInfo($id);
             $data = [

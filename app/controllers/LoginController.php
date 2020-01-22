@@ -1,6 +1,7 @@
 <?php 
 
 use App\libraries\Controller;
+
 /**
  * Login and Logout
  */
@@ -31,7 +32,6 @@ class LoginController extends Controller
     /**
      * Set sessions and redirect user to home page if everything is ok
      * If something goes wrong, load login page with err messages
-     * @return type
      */
     public function login()
     {
@@ -40,7 +40,9 @@ class LoginController extends Controller
         }
 
         if ($this->loginModel->userLogin()) {
+
             $user = $this->loginModel->userLogin();
+            
             $_SESSION['id'] = $user->id;
             $_SESSION['fname'] = $user->fname;
             $_SESSION['lname'] = $user->lname;
@@ -49,7 +51,6 @@ class LoginController extends Controller
 
             redirect('pages/home');
 
-            // redirect to home page with session data
         } else {
             $data = [
                 'errorMsg' => 'Try Again!'

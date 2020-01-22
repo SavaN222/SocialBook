@@ -17,7 +17,8 @@ function isLoggedIn()
 /**
  * Unset all session and logOut user
  */
-function logOut() {
+function logOut() 
+{
     unset($_SESSION['id']);
     unset($_SESSION['fname']);
     unset($_SESSION['lname']);

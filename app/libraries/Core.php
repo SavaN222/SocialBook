@@ -9,7 +9,6 @@ namespace App\libraries;
  */
 class Core
 {
-
     protected $currentController = 'PagesController';
     protected $currentMethod = 'index';
     protected $params = [];
@@ -58,4 +57,4 @@ class Core
             return $url;
         }
     }
-} // class end
+}

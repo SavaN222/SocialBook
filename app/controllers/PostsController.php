@@ -4,7 +4,7 @@ use App\libraries\Controller;
 use App\appclass\PostsValidation;
 
 /**
- * PostsController for POSTS AND COMMENTS
+ * PostsController for posts, comments and likes
  */
 class PostsController extends Controller
 {

@@ -23,6 +23,7 @@ class Login
         $this->db->bind(':password', $password);
 
        $result = $this->db->getSingle();
+       
        return $result;
     }
 
@@ -48,6 +49,4 @@ class Login
 
         return $password;
     }
-
-
 }

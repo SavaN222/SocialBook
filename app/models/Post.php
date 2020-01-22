@@ -2,6 +2,12 @@
 
 use App\libraries\Database; 
 
+/**
+ * Post class handle: 
+ * CRUD operation for posts.
+ * Create and Read comments.
+ * Like/Dislike post.
+ */
 class Post
 {
     private $db;
@@ -129,5 +135,4 @@ class Post
 
         $this->db->execute();
     }
-
 }

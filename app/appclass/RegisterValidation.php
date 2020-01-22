@@ -4,11 +4,18 @@ namespace App\appclass;
 
 use App\appclass\ImagesValidation;
 
+/**
+ * Class handle errors, validation and sanitize data
+ */
 class RegisterValidation
-{
+{   
+    /**
+     * Check if errors exsist
+     * @return array $errors
+     */
     public static function checkErrors() 
     {
-        $data = self::returnErrors();
+        $data = self::validateData();
         $errors = [];
 
         if (!empty($data['errorName'])) {
@@ -33,15 +40,14 @@ class RegisterValidation
             $errors['errorPic'] = $data['errorPic'];
         }
 
-
         return $errors;
     }
     
      /**
-     * Write errors if exsist
+     * Check for validation and write errors if exsist
      * @return array
      */
-    public static function returnErrors()
+    public static function validateData()
     {
 
         $data = self::sanitizeData();
@@ -96,7 +102,7 @@ class RegisterValidation
 
     /**
      * Sanitize and return clean data
-     * @return array
+     * @return array $data
      */
     public static function sanitizeData()
     {

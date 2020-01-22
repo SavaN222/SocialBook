@@ -2,6 +2,11 @@
 
 use App\libraries\Database; 
 
+/**
+ * Class user handle:
+ * Get user info, update user info, user delete profile.
+ * Search all SocialBook users.
+ */
 class User
 {
     private $db;
@@ -13,7 +18,6 @@ class User
 
     public function getUserInfo($id)
     {
-
         $this->db->query('SELECT * FROM users where id=:id');
 
         $this->db->bind(':id', $id);
@@ -21,7 +25,6 @@ class User
         $result = $this->db->getSingle();
 
         return $result;
-
     }
 
     public function updateUser($userData, $id)
@@ -34,6 +37,7 @@ class User
         $this->db->bind(':birthDate', $userData['birthDate']);
         $this->db->bind(':password',password_hash($userData['password'], PASSWORD_BCRYPT));
         $this->db->bind(':profilePic', $userData['profilePic']);
+
         $this->db->execute();
     }
 
@@ -63,6 +67,4 @@ class User
         $results = $this->db->getAll();
         return $results;
     }
-
 }
-

@@ -4,7 +4,7 @@ use App\libraries\Controller;
 use App\appclass\UserValidation;
 
 /**
- * UsersController handle EDIT and DELETE profile, and SEARCH method...
+ * UsersController handle EDIT, DELETE profile, and SEARCH method...
  */
 class UsersController extends Controller
 {
@@ -12,15 +12,10 @@ class UsersController extends Controller
     {
         $this->userModel = $this->model('User');
     }
-  
-    public function index()
-    {
-       
-    }
+
     /**
      * Edit PROFILE 
      */
-
     public function edit()
     {
          if (!isset($_POST['submit'])) {
@@ -41,13 +36,12 @@ class UsersController extends Controller
                 'userData' => $userData
             ];
         return $this->view('pages/editprofile', $data);
+        }
     }
 
-    }
     /**
      * Delete Profile
      */
-    
     public function delete()
     {
         $id = $_SESSION['id'];
@@ -56,6 +50,7 @@ class UsersController extends Controller
         logOut();
         redirect('register/register');   
     }
+    
     /**
      * Search USERS method for AJAX CALL
      * @return JSON
@@ -69,5 +64,4 @@ class UsersController extends Controller
         
         echo json_encode($users);
     }
-
 }
