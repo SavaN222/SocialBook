@@ -30,9 +30,9 @@
     <span class="badge badge-primary badge-pill">32</span>
   </li>
   <li class="list-group-item d-flex justify-content-between align-items-center">
-      <button type="button" class="btn btn-info"><a class="text-white" 
-        href="<?php echo  URLROOT;?>/friends/sendFriendRequest/<?php echo $data['id']; ?>" >
-      Send Request</a></button>   
+      <button type="button" <?php echo $data['status']['btn'] ?> class="btn btn-info"><a class="text-white" 
+        href="<?php echo $data['status']['href'] . $data['id']; ?>" >
+      <?php echo $data['status']['text']; ?></a></button>   
       <button class="btn btn-info">Send Message</button>    
   </li>
 </ul>

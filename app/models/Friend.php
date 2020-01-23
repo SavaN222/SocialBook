@@ -85,4 +85,18 @@ class Friend
 
         $this->db->execute();
     }
+
+    public function friendStatus($senderId, $recipientId)
+    {
+        $this->db->query('SELECT status, user_id FROM friends WHERE
+            (user_id = :senderId AND friend_id = :recipientId) OR
+            (user_id = :recipientId AND friend_id = :senderId)');
+
+        $this->db->bind(':senderId', $senderId);
+        $this->db->bind(':recipientId', $recipientId);
+
+        $result = $this->db->getSingle();
+
+        return $result;
+    }
 }

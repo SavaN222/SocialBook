@@ -2,6 +2,8 @@
 
 use App\libraries\Controller;
 
+use App\appclass\FriendStatus;
+
 /**
  * SocialBook pages-News Feed,Profile
  */
@@ -47,6 +49,8 @@ class PagesController extends Controller
         $userGallery = $this->galleryModel->getPhotos($id);
         $friendRequest = $this->friendModel->checkForRequest($_SESSION['id']);
         $countFriendRequest = $this->friendModel->countFriendRequest($_SESSION['id']);
+        $getFriendStatus = $this->friendModel->friendStatus($_SESSION['id'], $id);
+        $friendStatus = FriendStatus::friendStatus($getFriendStatus);
 
         if ($id == $_SESSION['id']) {
             $data = [
@@ -59,7 +63,6 @@ class PagesController extends Controller
             
         } else {
             $userInfo = $this->userModel->getUserInfo($id);
-
             $data = [
                 'id' => $userInfo->id,
                 'fname' => $userInfo->fname,
@@ -69,7 +72,8 @@ class PagesController extends Controller
                 'posts' => $userPosts,
                 'gallery' => $userGallery,
                 'friendRequests' => $friendRequest,
-                'countFriendRequest' => $countFriendRequest
+                'countFriendRequest' => $countFriendRequest,
+                'status' => $friendStatus
             ];
 
             return $this->view('pages/visitorprofile', $data);
