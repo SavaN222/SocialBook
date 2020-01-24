@@ -10,7 +10,7 @@ class LoginValidation
      * Sanitize input data for login
      * @return array $data
      */
-    public static function sanitizeData()
+    public static function sanitizeData(): array
     {
         if (isset($_POST['submit'])) {
             // First clear space

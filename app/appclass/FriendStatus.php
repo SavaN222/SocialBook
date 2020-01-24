@@ -13,7 +13,7 @@ class FriendStatus
     * @param obj $status 
     * @return array
     */
-    public static function friendStatus($status)
+    public static function friendStatus($status): array
     {
 
         if ($status == null) {

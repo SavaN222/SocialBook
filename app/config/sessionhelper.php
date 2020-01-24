@@ -5,7 +5,7 @@ session_start();
  * Check if user logged in
  * @return bool
  */
-function isLoggedIn()
+function isLoggedIn() : bool
 {
     if (isset($_SESSION['id'])) {
             return true;
@@ -17,7 +17,7 @@ function isLoggedIn()
 /**
  * Unset all session and logOut user
  */
-function logOut() 
+function logOut(): void
 {
     unset($_SESSION['id']);
     unset($_SESSION['fname']);

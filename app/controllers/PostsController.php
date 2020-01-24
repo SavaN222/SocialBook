@@ -11,6 +11,7 @@ class PostsController extends Controller
     public function __construct()
     {
         $this->postModel = $this->model('Post');
+        $this->friendModel = $this->model('Friend');
     }
 
     /**
@@ -61,10 +62,12 @@ class PostsController extends Controller
      public function editProfile($id) 
      {
         $userPosts = $this->postModel->getUserPosts($id);
+        $countFriendRequest = $this->friendModel->countFriendRequest($_SESSION['id']);
         
         if ($id == $_SESSION['id']) {
             $data = [
-                'posts' => $userPosts
+                'posts' => $userPosts,
+                'countFriendRequest' => $countFriendRequest
         ];
             return $this->view('pages/editpost', $data);
         } 

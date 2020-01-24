@@ -9,7 +9,7 @@ class ImagesValidation
      * @param $_FILES $img 
      * @return string filePath
      */
-    public static function uploadProfilePic($img)
+    public static function uploadProfilePic($img): string
     {
         $filePath = '';
 

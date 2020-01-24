@@ -8,7 +8,7 @@ class GalleryValidation
      * Sanitize and return description and picture for gallery
      * @return array data
      */
-    public static function sanitizeData()
+    public static function sanitizeData(): array
     {
         if (isset($_POST['submit'])) {
             $description = trim(htmlspecialchars(strip_tags($_POST['description'])));
@@ -27,7 +27,7 @@ class GalleryValidation
      * @param $_FILES $img 
      * @return string filePath
      */
-    public static function galleryPhoto($img)
+    public static function galleryPhoto($img): string
     {
         $filePath = '';
 

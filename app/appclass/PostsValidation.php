@@ -8,7 +8,7 @@ class PostsValidation
    * Sanitize description for comment and post
    * @return string
    */
-   public static function sanitizeDescription()
+   public static function sanitizeDescription(): string
    {
         if (isset($_POST['description'])) {
             $description = $_POST['description'];

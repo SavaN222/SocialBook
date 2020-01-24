@@ -11,6 +11,7 @@ class UsersController extends Controller
     public function __construct()
     {
         $this->userModel = $this->model('User');
+        $this->friendModel = $this->model('Friend');
     }
 
     /**
@@ -18,8 +19,14 @@ class UsersController extends Controller
      */
     public function edit()
     {
+        $countFriendRequest = $this->friendModel->countFriendRequest($_SESSION['id']);
+
          if (!isset($_POST['submit'])) {
-            return $this->view('pages/editprofile');
+            $data = [
+                'countFriendRequest' => $countFriendRequest
+            ];
+
+            return $this->view('pages/editprofile', $data);
         }
         $errors = UserValidation::checkErrors();
         $userData = UserValidation::sanitizeData();
@@ -33,7 +40,8 @@ class UsersController extends Controller
         } else {
             $data = [
                 'errors' => $errors,
-                'userData' => $userData
+                'userData' => $userData,
+                'countFriendRequest' => $countFriendRequest
             ];
         return $this->view('pages/editprofile', $data);
         }

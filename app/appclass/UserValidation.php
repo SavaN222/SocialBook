@@ -13,7 +13,7 @@ class UserValidation
      * Check if errors exsist
      * @return array $errors
      */
-    public static function checkErrors() 
+    public static function checkErrors(): array
     {
         $data = self::validateData();
         $errors = [];
@@ -42,7 +42,7 @@ class UserValidation
      * Check for validation and write errors if exsist
      * @return array
      */
-    public static function validateData()
+    public static function validateData(): array
     {
 
         $data = self::sanitizeData();
@@ -85,7 +85,7 @@ class UserValidation
      * Sanitize and return clean data
      * @return array $data
      */
-    public static function sanitizeData()
+    public static function sanitizeData(): array
     {
         if (isset($_POST['submit'])) {
             // Trim first//
