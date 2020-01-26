@@ -109,11 +109,12 @@ class User
      /**
      * If user delete his profile, this method will be called
      * Delete user gallery from database.
+     * status = "0" -> photo deleted
      * @param int $id 
      */
     public function deleteGallery(int $id)
     {
-        $this->db->query('DELETE FROM gallery WHERE user_id = :id');
+        $this->db->query('UPDATE gallery SET status = "0" WHERE user_id = :id');
 
         $this->db->bind(':id', $id);
 

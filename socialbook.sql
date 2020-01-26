@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jan 26, 2020 at 03:13 AM
+-- Generation Time: Jan 26, 2020 at 11:47 AM
 -- Server version: 5.7.26
 -- PHP Version: 7.2.18
 
@@ -100,17 +100,19 @@ CREATE TABLE IF NOT EXISTS `gallery` (
   `user_id` int(11) NOT NULL,
   `photo` varchar(255) NOT NULL,
   `description` varchar(255) NOT NULL,
+  `status` enum('0','1') NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `gallery`
 --
 
-INSERT INTO `gallery` (`id`, `user_id`, `photo`, `description`) VALUES
-(4, 20, 'images/gallery/TalkingDogimg1579353948.jpg', 'I\'am coding dog.\r\nThis is test for upload photos to profile gallery, design is very bad but i don\'t worry to much, because my main focus is Back-End logic with PHP. Some random text, dummy text, dummy,.............. :D eee test for hacking alert(\'TEST\')'),
-(5, 20, 'images/gallery/TalkingDogcatCoding1579354136.jpg', 'This is my coding friend, MR.Cat. He have best routine for coding, secret is this:\r\n1 line of code is equal to 10 hours of sleep'),
-(14, 19, 'images/gallery/NevenaNenicvintage-1950s-887273_6401580002481.jpg', 'Cool Photo');
+INSERT INTO `gallery` (`id`, `user_id`, `photo`, `description`, `status`) VALUES
+(4, 20, 'images/gallery/TalkingDogimg1579353948.jpg', 'I\'am coding dog.\r\nThis is test for upload photos to profile gallery, design is very bad but i don\'t worry to much, because my main focus is Back-End logic with PHP. Some random text, dummy text, dummy,.............. :D eee test for hacking alert(\'TEST\')', '1'),
+(5, 20, 'images/gallery/TalkingDogcatCoding1579354136.jpg', 'This is my coding friend, MR.Cat. He have best routine for coding, secret is this:\r\n1 line of code is equal to 10 hours of sleep', '1'),
+(14, 19, 'images/gallery/NevenaNenicvintage-1950s-887273_6401580002481.jpg', 'Cool Photo', '1'),
+(15, 28, 'images/gallery/CoolGuypaul-murphy-Ut9yic62qLE-unsplash1580038430.jpg', 'Graffiti', '0');
 
 -- --------------------------------------------------------
 
@@ -183,7 +185,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `birth_date` date NOT NULL,
-  `profile_pic` varchar(255) DEFAULT NULL,
+  `profile_pic` varchar(255) DEFAULT 'images/profile.jpg',
   `cover_pic` varchar(255) DEFAULT 'images/cover.png',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
@@ -193,11 +195,11 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `fname`, `lname`, `gender`, `email`, `password`, `birth_date`, `profile_pic`, `cover_pic`) VALUES
-(28, 'Cool', 'Guy', 'male', 'cguy@gmail.com', '$2y$10$pqFTXIP4Z/g6yuI/g0KaJebZ3HKFUMSILpkApuSmrv/.7KC4u6ZUO', '1996-08-30', 'images/profile/steve-halama-agPWVfDlApM-unsplash1580002395.jpg', 'images/cover/paul-murphy-Ut9yic62qLE-unsplash1580008051.jpg'),
+(28, 'Cool', 'Guy', 'male', 'cguy@gmail.com', '$2y$10$7gvu4R6CKmmyEco0NIHDq.AUoG/6xWhLsA8ltvyCr7Na20t3VmclO', '1996-08-30', 'images/profile/steve-halama-agPWVfDlApM-unsplash1580002395.jpg', 'images/cover/paul-murphy-Ut9yic62qLE-unsplash1580035438.jpg'),
 (27, 'Jana', 'Doe', 'other', 'jana@gmail.com', '$2y$10$J/.K1kjyZ0kdRDxHbKkhy.l2LXl/eBUrZCvzAlwYNohiXnZfHQ8Bq', '1959-02-19', 'images/profile/vintage-1950s-887273_6401579999178.jpg', NULL),
 (26, 'Milica', 'Milic', 'female', 'milica@gmail.com', '$2y$10$aQxbFM9n/bL.GsQ0TeV4PO3bNj.bU5BA383dsA3NrC9K6Z9QHjEzO', '2002-04-23', 'images/profile/img1579983850.jpg', NULL),
 (19, 'Nevena', 'Nenic', 'female', 'nena@gmail.com', '$2y$10$uetmutwotXgYnfMJcDRB6ePGDdVEjMPT9mCHOccIoBn0rlTTZr.vK', '1999-12-23', 'images/profile/michael-dam-mEZ3PoFGs_k-unsplash1579108028.jpg', NULL),
-(20, 'Talking', 'Dog', 'other', 'dog@gmail.com', '$2y$10$AbdcMZ6bYcnjXk72LAoQXeUNC3Tudr3LhcCes5e54HYK8THC2L8h6', '1992-07-17', 'images/profile/img1579350058.jpg', NULL),
+(20, 'Talking', 'Dog', 'other', 'dog@gmail.com', '$2y$10$AbdcMZ6bYcnjXk72LAoQXeUNC3Tudr3LhcCes5e54HYK8THC2L8h6', '1992-07-17', 'images/profile/img1579350058.jpg', 'images/cover.png'),
 (23, 'John', 'Doe', 'male', 'jdoe@gmail.com', '$2y$10$yqxxZMFR8vqNtYs1Y/HqzOtP7SQf2TC8ha5BlrOzoepgAkOX7LGt2', '2002-05-12', 'images/profile/mali1579722303.png', NULL),
 (18, 'Mirko', 'Mirkovic', 'male', 'mirko@gmail.com', '$2y$10$lkDsbVkg40g7NebCuiqQuOVG5TYuUKvyem.sBErSBJ9mpqeNEY1b.', '1998-09-18', 'images/profile/rohan-g-hdzBDVVsRT4-unsplash1579107981.jpg', NULL);
 COMMIT;

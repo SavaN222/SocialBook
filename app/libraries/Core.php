@@ -48,7 +48,7 @@ class Core
      * Get clean url in array [controller, method , params[]];
      * @return array
      */
-    public function getUrl() : array
+    public function getUrl()
     {
         if (isset($_GET['url'])) {
             $url = rtrim($_GET['url'], '/');

@@ -60,6 +60,12 @@ class UsersController extends Controller
         $this->userModel->deleteLikes($id);
         $this->userModel->deletePosts($id);
 
+        $profilePic = $_SESSION['profilePic'];
+        $coverPic = $_SESSION['coverPic'];
+
+        unlink($profilePic);
+        unlink($coverPic);
+
         logOut();
         
         redirect('register/register');   
