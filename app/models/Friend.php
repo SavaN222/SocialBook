@@ -151,4 +151,18 @@ class Friend
 
         return $results;
     }
+
+    public function userFriends(int $userId)
+    {
+        $this->db->query('SELECT DISTINCT u.id, u.fname, u.lname, u.profile_pic, u.status FROM users u JOIN friends f
+            ON (u.id = f.user_id OR u.id = f.friend_id) 
+            WHERE (f.user_id = :userId OR f.friend_id = :userId) AND f.status = :status');
+
+        $this->db->bind(':status', self::FRIEND);
+        $this->db->bind(':userId', $userId);
+
+        $results = $this->db->getAll();
+
+        return $results;
+    }
 }

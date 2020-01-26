@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jan 26, 2020 at 11:47 AM
+-- Generation Time: Jan 26, 2020 at 06:47 PM
 -- Server version: 5.7.26
 -- PHP Version: 7.2.18
 
@@ -127,7 +127,7 @@ CREATE TABLE IF NOT EXISTS `likes` (
   `post_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `user_id` (`user_id`,`post_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=63 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=64 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `likes`
@@ -139,6 +139,35 @@ INSERT INTO `likes` (`id`, `user_id`, `post_id`) VALUES
 (43, 24, 28),
 (34, 19, 23),
 (40, 18, 25);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `messages`
+--
+
+DROP TABLE IF EXISTS `messages`;
+CREATE TABLE IF NOT EXISTS `messages` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `friend_id` int(11) NOT NULL,
+  `text` varchar(255) NOT NULL,
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `messages`
+--
+
+INSERT INTO `messages` (`id`, `user_id`, `friend_id`, `text`, `date`) VALUES
+(1, 18, 19, 'Hey', '2020-01-26 18:11:50'),
+(3, 19, 18, 'Hey', '2020-01-26 18:12:22'),
+(5, 18, 19, 'Check out my gallery', '2020-01-26 18:12:50'),
+(7, 19, 18, 'I will', '2020-01-26 18:13:23'),
+(8, 19, 18, 'Gallery is amazing', '2020-01-26 18:38:59'),
+(12, 19, 18, 'Are you see my posts?', '2020-01-26 19:38:33'),
+(11, 18, 19, 'Thank you', '2020-01-26 19:37:20');
 
 -- --------------------------------------------------------
 
@@ -187,6 +216,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `birth_date` date NOT NULL,
   `profile_pic` varchar(255) DEFAULT 'images/profile.jpg',
   `cover_pic` varchar(255) DEFAULT 'images/cover.png',
+  `status` enum('0','1') NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
 
@@ -194,14 +224,14 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `fname`, `lname`, `gender`, `email`, `password`, `birth_date`, `profile_pic`, `cover_pic`) VALUES
-(28, 'Cool', 'Guy', 'male', 'cguy@gmail.com', '$2y$10$7gvu4R6CKmmyEco0NIHDq.AUoG/6xWhLsA8ltvyCr7Na20t3VmclO', '1996-08-30', 'images/profile/steve-halama-agPWVfDlApM-unsplash1580002395.jpg', 'images/cover/paul-murphy-Ut9yic62qLE-unsplash1580035438.jpg'),
-(27, 'Jana', 'Doe', 'other', 'jana@gmail.com', '$2y$10$J/.K1kjyZ0kdRDxHbKkhy.l2LXl/eBUrZCvzAlwYNohiXnZfHQ8Bq', '1959-02-19', 'images/profile/vintage-1950s-887273_6401579999178.jpg', NULL),
-(26, 'Milica', 'Milic', 'female', 'milica@gmail.com', '$2y$10$aQxbFM9n/bL.GsQ0TeV4PO3bNj.bU5BA383dsA3NrC9K6Z9QHjEzO', '2002-04-23', 'images/profile/img1579983850.jpg', NULL),
-(19, 'Nevena', 'Nenic', 'female', 'nena@gmail.com', '$2y$10$uetmutwotXgYnfMJcDRB6ePGDdVEjMPT9mCHOccIoBn0rlTTZr.vK', '1999-12-23', 'images/profile/michael-dam-mEZ3PoFGs_k-unsplash1579108028.jpg', NULL),
-(20, 'Talking', 'Dog', 'other', 'dog@gmail.com', '$2y$10$AbdcMZ6bYcnjXk72LAoQXeUNC3Tudr3LhcCes5e54HYK8THC2L8h6', '1992-07-17', 'images/profile/img1579350058.jpg', 'images/cover.png'),
-(23, 'John', 'Doe', 'male', 'jdoe@gmail.com', '$2y$10$yqxxZMFR8vqNtYs1Y/HqzOtP7SQf2TC8ha5BlrOzoepgAkOX7LGt2', '2002-05-12', 'images/profile/mali1579722303.png', NULL),
-(18, 'Mirko', 'Mirkovic', 'male', 'mirko@gmail.com', '$2y$10$lkDsbVkg40g7NebCuiqQuOVG5TYuUKvyem.sBErSBJ9mpqeNEY1b.', '1998-09-18', 'images/profile/rohan-g-hdzBDVVsRT4-unsplash1579107981.jpg', NULL);
+INSERT INTO `users` (`id`, `fname`, `lname`, `gender`, `email`, `password`, `birth_date`, `profile_pic`, `cover_pic`, `status`) VALUES
+(28, 'Cool', 'Guy', 'male', 'cguy@gmail.com', '$2y$10$7gvu4R6CKmmyEco0NIHDq.AUoG/6xWhLsA8ltvyCr7Na20t3VmclO', '1996-08-30', 'images/profile/steve-halama-agPWVfDlApM-unsplash1580002395.jpg', 'images/cover/paul-murphy-Ut9yic62qLE-unsplash1580035438.jpg', '0'),
+(27, 'Jana', 'Doe', 'other', 'jana@gmail.com', '$2y$10$J/.K1kjyZ0kdRDxHbKkhy.l2LXl/eBUrZCvzAlwYNohiXnZfHQ8Bq', '1959-02-19', 'images/profile/vintage-1950s-887273_6401579999178.jpg', NULL, '0'),
+(26, 'Milica', 'Milic', 'female', 'milica@gmail.com', '$2y$10$aQxbFM9n/bL.GsQ0TeV4PO3bNj.bU5BA383dsA3NrC9K6Z9QHjEzO', '2002-04-23', 'images/profile/img1579983850.jpg', NULL, '0'),
+(19, 'Nevena', 'Nenic', 'female', 'nena@gmail.com', '$2y$10$uetmutwotXgYnfMJcDRB6ePGDdVEjMPT9mCHOccIoBn0rlTTZr.vK', '1999-12-23', 'images/profile/michael-dam-mEZ3PoFGs_k-unsplash1579108028.jpg', NULL, '0'),
+(20, 'Talking', 'Dog', 'other', 'dog@gmail.com', '$2y$10$AbdcMZ6bYcnjXk72LAoQXeUNC3Tudr3LhcCes5e54HYK8THC2L8h6', '1992-07-17', 'images/profile/img1579350058.jpg', 'images/cover.png', '0'),
+(23, 'John', 'Doe', 'male', 'jdoe@gmail.com', '$2y$10$yqxxZMFR8vqNtYs1Y/HqzOtP7SQf2TC8ha5BlrOzoepgAkOX7LGt2', '2002-05-12', 'images/profile/mali1579722303.png', NULL, '0'),
+(18, 'Mirko', 'Mirkovic', 'male', 'mirko@gmail.com', '$2y$10$lkDsbVkg40g7NebCuiqQuOVG5TYuUKvyem.sBErSBJ9mpqeNEY1b.', '1998-09-18', 'images/profile/rohan-g-hdzBDVVsRT4-unsplash1579107981.jpg', NULL, '1');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

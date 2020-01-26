@@ -157,3 +157,8 @@ box-shadow: 0 0 0 0 !important;
     width: 85px;
     height: 85px;
 }
+/* MESSENGER */
+.chatbox {
+    height: 70%;
+    overflow: auto;
+}

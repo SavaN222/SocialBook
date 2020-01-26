@@ -11,9 +11,22 @@ class User
 {
     private $db;
 
+    private const OFFLINE = '0';
+    private const ONLINE = '1';
+
     public function __construct()
     {
         $this->db = new Database();
+    }
+
+    public function userStatus($userId, $status)
+    {
+        $this->db->query('UPDATE users SET status = :status WHERE id = :userId');
+
+        $this->db->bind(':userId', $userId);
+        $this->db->bind(':status', $status);
+
+        $this->db->execute();
     }
 
     /**

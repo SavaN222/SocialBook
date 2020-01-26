@@ -15,6 +15,10 @@ class PagesController extends Controller
         $this->postModel = $this->model('Post');
         $this->galleryModel = $this->model('Gallery');
         $this->friendModel = $this->model('Friend');
+
+         if (!isLoggedIn()) {
+            redirect('login/login');
+        }
     }
 
     /**
@@ -22,10 +26,6 @@ class PagesController extends Controller
      */
     public function index()
     {
-        if (!isLoggedIn()) {
-            redirect('login/login');
-        }
-
         $posts = $this->postModel->getPosts($_SESSION['id']);
         $friendRequest = $this->friendModel->checkForRequest($_SESSION['id']);
         $countFriendRequest = $this->friendModel->countFriendRequest($_SESSION['id']);

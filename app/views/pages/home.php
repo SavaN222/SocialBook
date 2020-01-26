@@ -13,7 +13,6 @@
                 <hr>
                 <p class="card-text"><strong><?php echo $data['totalPosts']->total; ?> </strong>posts</p>
                 <hr>
-                <a href="#" class="btn btn-primary">View Profile</a>
           </div>
         </div>
     </div> <!-- col-lg-3 -->

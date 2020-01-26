@@ -10,6 +10,7 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->loginModel = $this->model('Login');
+        $this->userModel = $this->model('User');
     }
 
     /**
@@ -25,6 +26,7 @@ class LoginController extends Controller
      */
     public function logoutUser()
     {
+        $this->userModel->userStatus($_SESSION['id'], '0');
         logOut();
         redirect('login/login');
     }
@@ -49,6 +51,9 @@ class LoginController extends Controller
             $_SESSION['birthDate'] = $user->birth_date;
             $_SESSION['profilePic'] = $user->profile_pic;
             $_SESSION['coverPic'] = $user->cover_pic;
+            $_SESSION['status'] = $user->status;
+
+            $this->userModel->userStatus($_SESSION['id'], '1');
 
             redirect('pages/home');
 
