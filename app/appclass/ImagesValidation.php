@@ -26,7 +26,7 @@ class ImagesValidation
             $filePath = 'images/profile/' . $imageName;
             move_uploaded_file($img['tmp_name'], $filePath);
         } else {
-            $filePath = '';
+            $filePath = $_SESSION['profilePic'];
         }
 
         return $filePath;

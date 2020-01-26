@@ -98,6 +98,7 @@ class UserValidation
             $password = htmlspecialchars(strip_tags($password));
             $birthDate = $_POST['birthDate'];
             $profilePic = ImagesValidation::uploadProfilePic($_FILES['profilePic']);
+
             $data = [
                 'fname' => $fname,
                 'lname' => $lname,

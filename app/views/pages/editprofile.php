@@ -49,7 +49,7 @@
                         <?php } ?>
         </li>
         <li class="list-group-item">
-          <label for="password">Change Password: </label>
+          <label for="password">Change/Confirm Password: </label>
           <input type="password" name="password">
            <!-- Name Errors Check -->
                         <?php if (!empty($data['errors']['errorPassword'])) { ?>

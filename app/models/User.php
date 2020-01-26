@@ -48,8 +48,53 @@ class User
         $this->db->bind(':id', $id);
 
         $this->db->execute();
-        
     }
+
+    public function deleteComments($id)
+    {
+        $this->db->query('DELETE FROM comments WHERE user_id = :id');
+
+        $this->db->bind(':id', $id);
+
+        $this->db->execute();
+    }
+
+    public function deleteFriends($id)
+    {
+        $this->db->query('DELETE FROM friends WHERE user_id = :id OR friend_id = :id');
+
+        $this->db->bind(':id', $id);
+
+        $this->db->execute();
+    }
+
+    public function deleteLikes($id)
+    {
+        $this->db->query('DELETE FROM likes WHERE user_id = :id');
+
+        $this->db->bind(':id', $id);
+
+        $this->db->execute();
+    }
+
+    public function deleteGallery($id)
+    {
+        $this->db->query('DELETE FROM gallery WHERE user_id = :id');
+
+        $this->db->bind(':id', $id);
+
+        $this->db->execute();
+    }
+
+    public function deletePosts($id)
+    {
+        $this->db->query('DELETE FROM posts WHERE user_id = :id');
+
+        $this->db->bind(':id', $id);
+
+        $this->db->execute();
+    }
+
 
     public function searchUsers($fname, $lname)
     {

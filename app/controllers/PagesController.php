@@ -29,11 +29,13 @@ class PagesController extends Controller
         $posts = $this->postModel->getPosts($_SESSION['id']);
         $friendRequest = $this->friendModel->checkForRequest($_SESSION['id']);
         $countFriendRequest = $this->friendModel->countFriendRequest($_SESSION['id']);
+        $friendSuggestions = $this->friendModel->friendSuggestions($_SESSION['id']);
 
         $data = [
             'posts' => $posts,
             'friendRequests' => $friendRequest,
-            'countFriendRequest' => $countFriendRequest
+            'countFriendRequest' => $countFriendRequest,
+            'friendSuggestions' => $friendSuggestions
         ];
 
         return $this->view('pages/home', $data);

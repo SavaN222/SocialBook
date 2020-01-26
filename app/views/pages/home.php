@@ -104,19 +104,24 @@
 
     <div class="col-lg-3"> 
         <div class="card">
-            <div class="card-header bg-info">
-                <img src="https://picsum.photos/200/300?random=1" class="card-img-top" alt="...">
-          </div>
             <div class="card-body text-center">
-                <h5 class="card-title">Random Pics.</h5>
-                <p class="card-blockquote font-italic">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit, illum!</p>
+                <h5 class="card-title">Maybe you know?</h5>
                 <hr>
-                <p class="card-text"><strong>25k </strong>followers</p>
-                <hr>
-                <p class="card-text"><strong>25k </strong>followers</p>
-                <hr>
-                <a href="#" class="btn btn-primary">View Profile</a>
-          </div>
+                <?php foreach ($data['friendSuggestions'] as $data['friendSuggestion']): ?>
+                <div class="d-flex justify-content-start align-items-center">
+
+                <a href="<?php echo URLROOT; ?>/pages/profile/<?php echo $data['friendSuggestion']->id; ?>">
+                <img class="mr-1 img-thumbnail friendRequest-img" src="<?php echo URLROOT;?>/<?php echo $data['friendSuggestion']->profile_pic; ?>">
+                <span class="text-info">
+                    <?php echo $data['friendSuggestion']->fname . ' ' . $data['friendSuggestion']->lname; ?>
+                </span>
+                    </a>
+              </div>
+              <hr>
+                <?php endforeach; ?>
+                 <div class="card-footer">
+                    <p class="card-text">Add new friends and get more posts!</p>
+                </div>
         </div>
     </div><!-- col-lg-3 -->
 </div> <!-- row -->

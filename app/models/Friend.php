@@ -99,4 +99,19 @@ class Friend
 
         return $result;
     }
+
+    public function friendSuggestions($userId)
+    {
+        $this->db->query('SELECT u.id, u.fname, u.lname, u.profile_pic FROM users u 
+            WHERE u.id <> :userId AND NOT EXISTS(SELECT * FROM friends WHERE (user_id = u.id and friend_id = :userId) 
+            OR (friend_id = u.id and user_id = :userId))  
+            LIMIT 5');
+
+        $this->db->bind(':userId', $userId);
+
+        $results = $this->db->getAll();
+
+        return $results;
+    }
+
 }

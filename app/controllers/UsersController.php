@@ -34,7 +34,6 @@ class UsersController extends Controller
 
         if (empty($errors)) {
             $this->userModel->updateUser($userData, $id);
-            unlink(URLROOT . '/images/profile' . $_SESSION['profilePic']);
             logOut();
             redirect('login/login');
         } else {
@@ -55,7 +54,14 @@ class UsersController extends Controller
         $id = $_SESSION['id'];
 
         $this->userModel->deleteUser($id);
+        $this->userModel->deleteComments($id);
+        $this->userModel->deleteFriends($id);
+        $this->userModel->deleteGallery($id);
+        $this->userModel->deleteLikes($id);
+        $this->userModel->deletePosts($id);
+
         logOut();
+        
         redirect('register/register');   
     }
     

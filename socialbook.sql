@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jan 22, 2020 at 11:40 PM
+-- Generation Time: Jan 26, 2020 at 12:10 AM
 -- Server version: 5.7.26
 -- PHP Version: 7.2.18
 
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `comments` (
   `description` varchar(255) NOT NULL,
   `date_added` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=64 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=66 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `comments`
@@ -47,6 +47,7 @@ INSERT INTO `comments` (`id`, `user_id`, `post_id`, `description`, `date_added`)
 (54, 18, 22, 'I agree', '2020-01-17 18:09:12'),
 (53, 19, 22, 'Yes, developer doing amazing job :D', '2020-01-17 18:08:00'),
 (61, 19, 25, 'BTW!, gallery is amazing :)', '2020-01-18 14:34:29'),
+(64, 24, 28, 'wow\n', '2020-01-24 17:08:52'),
 (60, 19, 25, 'Mirko, you have no clue ', '2020-01-18 14:34:03'),
 (59, 18, 25, 'Mr Cat is better than you!!!', '2020-01-18 14:33:29'),
 (58, 20, 23, 'I\'am hungry!', '2020-01-18 13:21:39'),
@@ -67,7 +68,7 @@ CREATE TABLE IF NOT EXISTS `friends` (
   `status` enum('0','1','2','') NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `user_id` (`user_id`,`friend_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `friends`
@@ -76,9 +77,8 @@ CREATE TABLE IF NOT EXISTS `friends` (
 INSERT INTO `friends` (`id`, `user_id`, `friend_id`, `status`) VALUES
 (4, 18, 20, '2'),
 (5, 19, 20, '2'),
-(6, 23, 18, '2'),
-(7, 23, 19, '2'),
-(18, 18, 19, '2');
+(24, 19, 18, '2'),
+(7, 23, 19, '2');
 
 -- --------------------------------------------------------
 
@@ -93,7 +93,7 @@ CREATE TABLE IF NOT EXISTS `gallery` (
   `photo` varchar(255) NOT NULL,
   `description` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `gallery`
@@ -116,13 +116,14 @@ CREATE TABLE IF NOT EXISTS `likes` (
   `post_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `user_id` (`user_id`,`post_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=43 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=47 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `likes`
 --
 
 INSERT INTO `likes` (`id`, `user_id`, `post_id`) VALUES
+(43, 24, 28),
 (34, 19, 23),
 (40, 18, 25);
 
@@ -142,7 +143,7 @@ CREATE TABLE IF NOT EXISTS `posts` (
   `comments_id` int(11) DEFAULT NULL,
   `likes` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `posts`
@@ -174,17 +175,18 @@ CREATE TABLE IF NOT EXISTS `users` (
   `profile_pic` varchar(255) DEFAULT NULL,
   `cover_pic` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `fname`, `lname`, `gender`, `email`, `password`, `birth_date`, `profile_pic`, `cover_pic`) VALUES
+(26, 'Milica', 'Milic', 'female', 'milica@gmail.com', '$2y$10$aQxbFM9n/bL.GsQ0TeV4PO3bNj.bU5BA383dsA3NrC9K6Z9QHjEzO', '2002-04-23', 'images/profile/img1579983850.jpg', NULL),
 (19, 'Nevena', 'Nenic', 'female', 'nena@gmail.com', '$2y$10$uetmutwotXgYnfMJcDRB6ePGDdVEjMPT9mCHOccIoBn0rlTTZr.vK', '1999-12-23', 'images/profile/michael-dam-mEZ3PoFGs_k-unsplash1579108028.jpg', NULL),
 (20, 'Talking', 'Dog', 'other', 'dog@gmail.com', '$2y$10$AbdcMZ6bYcnjXk72LAoQXeUNC3Tudr3LhcCes5e54HYK8THC2L8h6', '1992-07-17', 'images/profile/img1579350058.jpg', NULL),
 (23, 'John', 'Doe', 'male', 'jdoe@gmail.com', '$2y$10$yqxxZMFR8vqNtYs1Y/HqzOtP7SQf2TC8ha5BlrOzoepgAkOX7LGt2', '2002-05-12', 'images/profile/mali1579722303.png', NULL),
-(18, 'Mirko', 'Mirkovic', 'male', 'mirko@gmail.com', '$2y$10$7jAuRhtIwn7Ivzo9u9LiYOyTG1IzOAnQb9kPusAD4ua5w/7q.tY62', '1998-09-18', 'images/profile/rohan-g-hdzBDVVsRT4-unsplash1579107981.jpg', NULL);
+(18, 'Mirko', 'Mirkovic', 'male', 'mirko@gmail.com', '$2y$10$lkDsbVkg40g7NebCuiqQuOVG5TYuUKvyem.sBErSBJ9mpqeNEY1b.', '1998-09-18', 'images/profile/rohan-g-hdzBDVVsRT4-unsplash1579107981.jpg', NULL);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
