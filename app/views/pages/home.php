@@ -7,12 +7,11 @@
                 <img src="<?php echo URLROOT.'/'.$_SESSION['profilePic']; ?>" class="card-img-top rounded " alt="...">
           </div>
             <div class="card-body text-center">
-                <h5 class="card-title"><?php echo $_SESSION['fname']; ?></h5>
-                <p class="card-blockquote font-italic">Lorem ipsum.</p>
+                <h5 class="card-title"><?php echo $_SESSION['fname'] . ' ' . $_SESSION['lname']; ?></h5>
                 <hr>
-                <p class="card-text"><strong>25k </strong>followers</p>
+                <p class="card-text"><strong><?php echo $data['totalFriends']->total; ?> </strong>friends</p>
                 <hr>
-                <p class="card-text"><strong>25k </strong>followers</p>
+                <p class="card-text"><strong><?php echo $data['totalPosts']->total; ?> </strong>posts</p>
                 <hr>
                 <a href="#" class="btn btn-primary">View Profile</a>
           </div>

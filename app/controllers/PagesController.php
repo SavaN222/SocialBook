@@ -30,12 +30,16 @@ class PagesController extends Controller
         $friendRequest = $this->friendModel->checkForRequest($_SESSION['id']);
         $countFriendRequest = $this->friendModel->countFriendRequest($_SESSION['id']);
         $friendSuggestions = $this->friendModel->friendSuggestions($_SESSION['id']);
+        $totalPosts = $this->postModel->numberOfUserPosts($_SESSION['id']);
+        $totalFriends = $this->friendModel->totalFriend($_SESSION['id']);
 
         $data = [
             'posts' => $posts,
             'friendRequests' => $friendRequest,
             'countFriendRequest' => $countFriendRequest,
-            'friendSuggestions' => $friendSuggestions
+            'friendSuggestions' => $friendSuggestions,
+            'totalPosts' => $totalPosts,
+            'totalFriends' => $totalFriends
         ];
 
         return $this->view('pages/home', $data);
@@ -54,17 +58,22 @@ class PagesController extends Controller
         $getFriendStatus = $this->friendModel->friendStatus($_SESSION['id'], $id);
         $friendStatus = FriendStatus::friendStatus($getFriendStatus);
 
+
         if ($id == $_SESSION['id']) {
+            $totalFriends = $this->friendModel->totalFriend($_SESSION['id']);
+
             $data = [
                 'posts' => $userPosts,
                 'gallery' => $userGallery,
                 'friendRequests' => $friendRequest,
-                'countFriendRequest' => $countFriendRequest
+                'countFriendRequest' => $countFriendRequest,
+                'totalFriends' => $totalFriends
         ];
             return $this->view('pages/myprofile', $data);
             
         } else {
             $userInfo = $this->userModel->getUserInfo($id);
+            $totalFriends = $this->friendModel->totalFriend($id);
             $data = [
                 'id' => $userInfo->id,
                 'fname' => $userInfo->fname,
@@ -76,7 +85,8 @@ class PagesController extends Controller
                 'gallery' => $userGallery,
                 'friendRequests' => $friendRequest,
                 'countFriendRequest' => $countFriendRequest,
-                'status' => $friendStatus
+                'status' => $friendStatus,
+                'totalFriends' => $totalFriends
             ];
 
             return $this->view('pages/visitorprofile', $data);

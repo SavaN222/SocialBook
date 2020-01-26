@@ -11,8 +11,7 @@ class Gallery
 
     private const DELETE = '0';
     private const ACTIVE = '1';
-
-
+    
     public function __construct()
     {
         $this->db = new Database();

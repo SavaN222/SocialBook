@@ -32,6 +32,20 @@ class Friend
         $this->db->execute();
     }
 
+    public function totalFriend($id)
+    {
+        $this->db->query('SELECT DISTINCT count(id) as total FROM friends 
+            WHERE (user_id = :userId OR friend_id = :friendId) AND status = :status');
+
+        $this->db->bind(':userId', $id);
+        $this->db->bind(':friendId', $id);
+        $this->db->bind(':status', self::FRIEND);
+
+        $result = $this->db->getSingle();
+
+        return $result;
+    }
+
     /**
      * Check if user have friend requests and return all friend request.
      * @param int $id
