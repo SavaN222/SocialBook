@@ -136,6 +136,21 @@
                         </div>
                         <?php } ?>
 
+                        <div class="form-group">
+                    <label for="coverPic">Cover Pic: </label>
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-camera"></i></span>
+                        </div>
+                    <input type="file" class="form-control" name="coverPic">
+                </div>
+                 <!-- Picture Errors Check -->
+                        <?php if (!empty($data['errors']['errorCoverPic'])) { ?>
+                        <div class="alert alert-warning" role='alert'>
+                        <?php echo $data['errors']['errorCoverPic']; ?>
+                        </div>
+                        <?php } ?>
+
                 <hr>
                  <div class="form-group">
                     <div class="row">

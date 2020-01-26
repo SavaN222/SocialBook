@@ -39,6 +39,9 @@ class RegisterValidation
         if (!empty($data['errorPic'])) {
             $errors['errorPic'] = $data['errorPic'];
         }
+        if (!empty($data['coverPic'])) {
+            $errors['coverPic'] = $data['coverPic'];
+        }
 
         return $errors;
     }
@@ -97,6 +100,10 @@ class RegisterValidation
             $data['errorPic'] = 'Profile Image must be in JPG/PNG format.';
         }
 
+        if (empty($data['coverPic'])) {
+            $data['errorCoverPic'] = 'Cover Image must be in JPG/PNG format.';
+        }
+
         return $data;
     }
 
@@ -122,6 +129,7 @@ class RegisterValidation
             $cpassword = htmlspecialchars(strip_tags($cpassword));
             $birthDate = $_POST['birth'];
             $profilePic = ImagesValidation::uploadProfilePic($_FILES['profilePic']);
+            $coverPic = ImagesValidation::uploadCoverPic($_FILES['coverPic']);
             $data = [
                 'fname' => $fname,
                 'lname' => $lname,
@@ -131,13 +139,15 @@ class RegisterValidation
                 'cpassword' => $cpassword,
                 'birthDate' => $birthDate,
                 'profilePic' => $profilePic,
+                'coverPic' => $coverPic,
                 'errorName' => '',
                 'errorLastName' => '',
                 'errorEmail' => '',
                 'errorGender' => '',
                 'errorPassword' => '',
                 'errorBirth' => '',
-                'errorPic' => ''
+                'errorPic' => '',
+                'errorCoverPic' => ''
             ];
         }
 
