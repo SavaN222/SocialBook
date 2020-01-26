@@ -27,7 +27,7 @@
   </li>
   <li class="list-group-item align-items-center">
     Total Friends:
-    <span class="badge badge-primary badge-pill"> 32</span>
+    <span class="badge badge-primary badge-pill"> <?php echo $data['totalFriends']->total; ?></span>
   </li>
   <li class="list-group-item d-flex justify-content-between align-items-center">
     <button class="btn btn-info w-100"><a class="text-white" href="<?php echo URLROOT; ?>/users/edit">Edit Profile</a></button>

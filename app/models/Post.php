@@ -55,6 +55,21 @@ class Post
     }
 
     /**
+     * Count user posts
+     * @param int $userId 
+     */
+    public function numberOfUserPosts(int $userId)
+    {
+        $this->db->query('SELECT count(id) as total FROM posts WHERE user_id = :userId');
+
+        $this->db->bind(':userId', $userId);
+
+        $result = $this->db->getSingle();
+
+        return $result;
+    }
+
+    /**
      * Get number of likes for post
      * @param int $postId 
      */
