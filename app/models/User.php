@@ -19,7 +19,12 @@ class User
         $this->db = new Database();
     }
 
-    public function userStatus($userId, $status)
+    /**
+     * Update user status ONLINE/OFLINe
+     * @param int $userId 
+     * @param string $status 
+     */
+    public function userStatus(int $userId, string $status)
     {
         $this->db->query('UPDATE users SET status = :status WHERE id = :userId');
 
@@ -142,6 +147,15 @@ class User
     public function deletePosts(int $id)
     {
         $this->db->query('DELETE FROM posts WHERE user_id = :id');
+
+        $this->db->bind(':id', $id);
+
+        $this->db->execute();
+    }
+
+    public function deleteMessages(int $id)
+    {
+        $this->db->query('DELETE FROM messages WHERE user_id = :id');
 
         $this->db->bind(':id', $id);
 

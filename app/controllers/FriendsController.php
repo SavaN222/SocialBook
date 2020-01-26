@@ -10,6 +10,7 @@ class FriendsController extends Controller
     public function __construct()
     {
         $this->friendModel = $this->model('Friend');
+        $this->messageModel = $this->model('Message');
     }
 
    /**
@@ -53,6 +54,7 @@ class FriendsController extends Controller
     {
 
         $this->friendModel->declineFriendRequest($_SESSION['id'], $id);
+        $this->messageModel->deleteChatIfNotFriends($_SESSION['id'], $id);
 
         redirect('pages/index');
     }

@@ -2,8 +2,6 @@
 
 namespace App\appclass;
 
-use App\appclass\ImagesValidation;
-
 /**
  * Class handle errors, validation and sanitize data
  */
@@ -35,12 +33,6 @@ class RegisterValidation
         }
         if (!empty($data['errorBirth'])) {
             $errors['errorBirth'] = $data['errorBirth'];
-        }
-        if (!empty($data['errorPic'])) {
-            $errors['errorPic'] = $data['errorPic'];
-        }
-        if (!empty($data['coverPic'])) {
-            $errors['coverPic'] = $data['coverPic'];
         }
 
         return $errors;
@@ -97,11 +89,11 @@ class RegisterValidation
         }
 
         if (empty($data['profilePic'])) {
-            $data['errorPic'] = 'Profile Image must be in JPG/PNG format.';
+            $data['profilePic'] = '/images/profile.jpg';
         }
 
         if (empty($data['coverPic'])) {
-            $data['errorCoverPic'] = 'Cover Image must be in JPG/PNG format.';
+            $data['coverPic'] = 'images/cover.png';
         }
 
         return $data;
@@ -128,8 +120,8 @@ class RegisterValidation
             $password = htmlspecialchars(strip_tags($password));
             $cpassword = htmlspecialchars(strip_tags($cpassword));
             $birthDate = $_POST['birth'];
-            $profilePic = ImagesValidation::uploadProfilePic($_FILES['profilePic']);
-            $coverPic = ImagesValidation::uploadCoverPic($_FILES['coverPic']);
+            $profilePic = self::uploadProfilePic($_FILES['profilePic']);
+            $coverPic = self::uploadCoverPic($_FILES['coverPic']);
             $data = [
                 'fname' => $fname,
                 'lname' => $lname,
@@ -152,5 +144,61 @@ class RegisterValidation
         }
 
         return $data;
+    }
+
+    /**
+     * Check if image jpg or png and give image unique name
+     * @param array $_FILES['profilePic'] $img 
+     * @return string filePath
+     */
+    public static function uploadProfilePic(array $img): string
+    {
+        $filePath = '';
+
+        $allowedExtension = ['jpg','png'];
+        $allowedTypes = ['image/jpeg', 'image/png', 'image/pjpeg'];
+
+        $imageNameArray = explode('.', $img['name']);
+        $imageExtension = end($imageNameArray);
+
+        $imageName = $imageNameArray[0] . round(microtime(true)).'.'.$imageExtension;
+
+        if (in_array($imageExtension, $allowedExtension) && 
+            in_array($img['type'], $allowedTypes)) {
+            $filePath = 'images/profile/' . $imageName;
+            move_uploaded_file($img['tmp_name'], $filePath);
+        } else {
+            $filePath = '/images/profile.jpg';
+        }
+
+        return $filePath;
+    }
+
+    /**
+     * Check if image jpg or png and give image unique name
+     * @param array $_FILES['profilePic'] $img 
+     * @return string filePath
+     */
+    public static function uploadCoverPic(array $img): string
+    {
+        $filePath = '';
+
+        $allowedExtension = ['jpg','png'];
+        $allowedTypes = ['image/jpeg', 'image/png', 'image/pjpeg'];
+
+        $imageNameArray = explode('.', $img['name']);
+        $imageExtension = end($imageNameArray);
+
+        $imageName = $imageNameArray[0] . round(microtime(true)).'.'.$imageExtension;
+
+        if (in_array($imageExtension, $allowedExtension) && 
+            in_array($img['type'], $allowedTypes)) {
+            $filePath = 'images/cover/' . $imageName;
+            move_uploaded_file($img['tmp_name'], $filePath);
+        } else {
+            $filePath = '/images/cover.png';
+        }
+
+        return $filePath;
     }
 }

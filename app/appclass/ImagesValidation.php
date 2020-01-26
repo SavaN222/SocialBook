@@ -11,7 +11,7 @@ class ImagesValidation
      */
     public static function uploadProfilePic(array $img): string
     {
-        $filePath = '';
+        $profilePath = '';
 
         $allowedExtension = ['jpg','png'];
         $allowedTypes = ['image/jpeg', 'image/png', 'image/pjpeg'];
@@ -23,17 +23,17 @@ class ImagesValidation
 
         if (in_array($imageExtension, $allowedExtension) && 
             in_array($img['type'], $allowedTypes)) {
-            $filePath = 'images/profile/' . $imageName;
-            move_uploaded_file($img['tmp_name'], $filePath);
+            $profilePath = 'images/profile/' . $imageName;
+            move_uploaded_file($img['tmp_name'], $profilePath);
             if (isset($_SESSION['profilePic'])) {
                 $deleteOldPic = $_SESSION['profilePic'];
                 unlink($deleteOldPic);
             }
         } else {
-            $filePath = $_SESSION['profilePic'];
+            $profilePath = $_SESSION['profilePic'];
         }
 
-        return $filePath;
+        return $profilePath;
     }
 
     /**
@@ -43,7 +43,7 @@ class ImagesValidation
      */
     public static function uploadCoverPic(array $img): string
     {
-        $filePath = '';
+        $coverPath = '';
 
         $allowedExtension = ['jpg','png'];
         $allowedTypes = ['image/jpeg', 'image/png', 'image/pjpeg'];
@@ -55,16 +55,16 @@ class ImagesValidation
 
         if (in_array($imageExtension, $allowedExtension) && 
             in_array($img['type'], $allowedTypes)) {
-            $filePath = 'images/cover/' . $imageName;
-            move_uploaded_file($img['tmp_name'], $filePath);
+            $coverPath = 'images/cover/' . $imageName;
+            move_uploaded_file($img['tmp_name'], $coverPath);
             if (isset($_SESSION['coverPic'])) {
                 $deleteOldPic = $_SESSION['coverPic'];
                 unlink($deleteOldPic);
             }
         } else {
-            $filePath = $_SESSION['coverPic'];
+            $coverPath = $_SESSION['coverPic'];
         }
 
-        return $filePath;
+        return $coverPath;
     }
 }

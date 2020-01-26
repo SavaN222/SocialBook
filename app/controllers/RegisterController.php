@@ -12,6 +12,7 @@ class RegisterController extends Controller
     {
         $this->registerModel = $this->model('Register');
     }
+    
    /**
     * Load register page, if registration invalid load with errors
     */

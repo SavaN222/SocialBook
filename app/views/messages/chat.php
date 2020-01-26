@@ -44,10 +44,12 @@
                             <div class="col-lg-12">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div>
+                                        <a href="<?php echo URLROOT;?>/pages/profile/<?php echo $data['friendInfo']->id; ?>">
                                         <img class="mr-1 img-thumbnail friendRequest-img" src="<?php echo URLROOT; ?>/<?php echo $data['friendInfo']->profile_pic; ?>">
                                         <span class="text-info">
                                            <?php echo $data['friendInfo']->fname . ' ' . $data['friendInfo']->lname; ?>
                                         </span> 
+                                        </a>
                                     </div>
                                     <i class="fas fa-search"></i>
                                 </div>
@@ -70,7 +72,7 @@
                         <?php } else {
                             ?>
                             <div class="sendMessage float-right">
-                                        <span class="bg-primary text-white p-2">
+                                        <span class="bg-primary text-white p-2 mr-1">
                                          <?php echo $data['message']->message; ?>
                                         </span> 
                                         <img class="mr-1 img-thumbnail friendRequest-img" src="<?php echo URLROOT; ?>/<?php echo $_SESSION['profilePic']; ?>">

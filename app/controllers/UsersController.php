@@ -59,6 +59,7 @@ class UsersController extends Controller
         $this->userModel->deleteGallery($id);
         $this->userModel->deleteLikes($id);
         $this->userModel->deletePosts($id);
+        $this->userModel->deleteMessages($id);
 
         $profilePic = $_SESSION['profilePic'];
         $coverPic = $_SESSION['coverPic'];
