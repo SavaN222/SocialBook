@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jan 26, 2020 at 01:39 AM
+-- Generation Time: Jan 26, 2020 at 03:13 AM
 -- Server version: 5.7.26
 -- PHP Version: 7.2.18
 
@@ -125,7 +125,7 @@ CREATE TABLE IF NOT EXISTS `likes` (
   `post_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `user_id` (`user_id`,`post_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=62 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=63 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `likes`
@@ -133,7 +133,7 @@ CREATE TABLE IF NOT EXISTS `likes` (
 
 INSERT INTO `likes` (`id`, `user_id`, `post_id`) VALUES
 (59, 19, 33),
-(61, 28, 33),
+(62, 28, 33),
 (43, 24, 28),
 (34, 19, 23),
 (40, 18, 25);
@@ -184,7 +184,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `password` varchar(255) NOT NULL,
   `birth_date` date NOT NULL,
   `profile_pic` varchar(255) DEFAULT NULL,
-  `cover_pic` varchar(255) DEFAULT NULL,
+  `cover_pic` varchar(255) DEFAULT 'images/cover.png',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
 
@@ -193,7 +193,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `fname`, `lname`, `gender`, `email`, `password`, `birth_date`, `profile_pic`, `cover_pic`) VALUES
-(28, 'Cool', 'Guy', 'male', 'cguy@gmail.com', '$2y$10$6D96Wd.nMOzl3/ZhfpOGxuUqd6fwUydrjACzBz05DBs87o7.jzpT2', '1996-08-30', 'images/profile/steve-halama-agPWVfDlApM-unsplash1580002395.jpg', NULL),
+(28, 'Cool', 'Guy', 'male', 'cguy@gmail.com', '$2y$10$pqFTXIP4Z/g6yuI/g0KaJebZ3HKFUMSILpkApuSmrv/.7KC4u6ZUO', '1996-08-30', 'images/profile/steve-halama-agPWVfDlApM-unsplash1580002395.jpg', 'images/cover/paul-murphy-Ut9yic62qLE-unsplash1580008051.jpg'),
 (27, 'Jana', 'Doe', 'other', 'jana@gmail.com', '$2y$10$J/.K1kjyZ0kdRDxHbKkhy.l2LXl/eBUrZCvzAlwYNohiXnZfHQ8Bq', '1959-02-19', 'images/profile/vintage-1950s-887273_6401579999178.jpg', NULL),
 (26, 'Milica', 'Milic', 'female', 'milica@gmail.com', '$2y$10$aQxbFM9n/bL.GsQ0TeV4PO3bNj.bU5BA383dsA3NrC9K6Z9QHjEzO', '2002-04-23', 'images/profile/img1579983850.jpg', NULL),
 (19, 'Nevena', 'Nenic', 'female', 'nena@gmail.com', '$2y$10$uetmutwotXgYnfMJcDRB6ePGDdVEjMPT9mCHOccIoBn0rlTTZr.vK', '1999-12-23', 'images/profile/michael-dam-mEZ3PoFGs_k-unsplash1579108028.jpg', NULL),

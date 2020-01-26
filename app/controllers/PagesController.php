@@ -71,6 +71,7 @@ class PagesController extends Controller
                 'lname' => $userInfo->lname,
                 'birthDate' => $userInfo->birth_date,
                 'profilePic' => $userInfo->profile_pic,
+                'coverPic' => $userInfo->cover_pic,
                 'posts' => $userPosts,
                 'gallery' => $userGallery,
                 'friendRequests' => $friendRequest,

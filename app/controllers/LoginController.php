@@ -48,6 +48,7 @@ class LoginController extends Controller
             $_SESSION['lname'] = $user->lname;
             $_SESSION['birthDate'] = $user->birth_date;
             $_SESSION['profilePic'] = $user->profile_pic;
+            $_SESSION['coverPic'] = $user->cover_pic;
 
             redirect('pages/home');
 

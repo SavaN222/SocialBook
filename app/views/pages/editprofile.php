@@ -2,7 +2,7 @@
 
 <div class="container-fluid">
   <div class="card">
-      <div class="card-header cover-img" style="background-image:url('<?php echo URLROOT; ?>/images/cover.png');">
+      <div class="card-header cover-img" style="background-image:url('<?php echo URLROOT; ?>/<?php echo $_SESSION['coverPic']; ?>');">
           <img src="<?php echo URLROOT.'/'.$_SESSION['profilePic']; ?>" class='profile-pic'>
           <span class="text-dark text-pic h3">
               <?php echo $_SESSION['fname'] . ' ' . $_SESSION['lname']; ?>
@@ -59,9 +59,14 @@
                         <?php } ?>
         </li>
         <li class="list-group-item">
-          <label for="profilePicture">Change Profile Picture</label>
+          <label for="profilePic">Change Profile Picture</label>
           <input type="file" class="form-control" name="profilePic" 
           value="<?php echo $_SESSION['profilePic']; ?>">
+        </li>
+        <li class="list-group-item">
+          <label for="coverPic">Change Cover Picture</label>
+          <input type="file" class="form-control" name="coverPic" 
+          value="<?php echo $_SESSION['coverPic']; ?>">
         </li>
          <li class="list-group-item">
          <button name="submit" class="btn btn-info w-100">UPDATE</button>

@@ -38,7 +38,7 @@ class User
       */
     public function updateUser(array $userData, int $id)
     {
-        $this->db->query('UPDATE users SET fname=:fname, lname=:lname, birth_date=:birthDate, password=:password, profile_pic=:profilePic WHERE id=:id');
+        $this->db->query('UPDATE users SET fname=:fname, lname=:lname, birth_date=:birthDate, password=:password, profile_pic=:profilePic, cover_pic=:coverPic WHERE id=:id');
 
         $this->db->bind(':id', $id);
         $this->db->bind(':fname', $userData['fname']);
@@ -46,6 +46,7 @@ class User
         $this->db->bind(':birthDate', $userData['birthDate']);
         $this->db->bind(':password',password_hash($userData['password'], PASSWORD_BCRYPT));
         $this->db->bind(':profilePic', $userData['profilePic']);
+        $this->db->bind(':coverPic', $userData['coverPic']);
 
         $this->db->execute();
     }

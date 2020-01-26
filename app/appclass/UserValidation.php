@@ -98,6 +98,7 @@ class UserValidation
             $password = htmlspecialchars(strip_tags($password));
             $birthDate = $_POST['birthDate'];
             $profilePic = ImagesValidation::uploadProfilePic($_FILES['profilePic']);
+            $coverPic = ImagesValidation::uploadCoverPic($_FILES['coverPic']);
 
             $data = [
                 'fname' => $fname,
@@ -105,6 +106,7 @@ class UserValidation
                 'password' => $password,
                 'birthDate' => $birthDate,
                 'profilePic' => $profilePic,
+                'coverPic' => $coverPic,
                 'errorName' => '',
                 'errorLastName' => '',
                 'errorPassword' => '',
