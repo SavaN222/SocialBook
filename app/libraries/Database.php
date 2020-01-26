@@ -37,21 +37,36 @@ class Database
         }
     }
 
-    public function query($sql)
+    /**
+     * Write sql query
+     * @param string $sql 
+     */
+    public function query(string $sql)
     {
         $this->stmt = $this->conn->prepare($sql);
     }
 
+    /**
+     * Bind parameter in query
+     * @param string|int $param 
+     * @param string|int $value 
+     */
     public function bind($param, $value)
     {
         $this->stmt->bindParam($param, $value);
     }
 
+    /**
+     * Execute query
+     */
     public function execute()
     {
         return $this->stmt->execute();
     }
 
+    /**
+     * Get all data like objects
+     */
     public function getAll()
     {
         $this->execute();
@@ -59,13 +74,16 @@ class Database
         return $this->stmt->fetchAll(PDO::FETCH_OBJ);
     }
 
+    /**
+     * Get single data like object
+     */
     public function getSingle()
     {
         $this->execute();
 
         return $this->stmt->fetch(PDO::FETCH_OBJ);
     }
-
+    
     public function rowCount()
     {
         return $this->stmt->rowCount();

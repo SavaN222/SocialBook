@@ -43,9 +43,9 @@ class PagesController extends Controller
     
     /**
      * If the user watches his profile load pages/myprofile other visitorprofile
-     * @param $id- user id in database from url example: /profile/5(userID) 
+     * @param int $id- user id in database from url example: /profile/5(userID) 
      */
-    public function profile($id)
+    public function profile(int $id)
     {
         $userPosts = $this->postModel->getUserPosts($id);
         $userGallery = $this->galleryModel->getPhotos($id);

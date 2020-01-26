@@ -24,10 +24,10 @@ class GalleryValidation
 
      /**
      * Check if image jpg or png and give image unique name
-     * @param $_FILES $img 
+     * @param array $_FILES['photo'] $img 
      * @return string filePath
      */
-    public static function galleryPhoto($img): string
+    public static function galleryPhoto(array $img): string
     {
         $filePath = '';
 

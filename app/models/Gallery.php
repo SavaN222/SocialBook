@@ -14,7 +14,13 @@ class Gallery
         $this->db = new Database();
     }
 
-    public function addPhoto($userId, $photo, $description)
+    /**
+     * Add new photo in profile gallery
+     * @param int $userId 
+     * @param string $photo 
+     * @param string $description 
+     */
+    public function addPhoto(int $userId, string $photo, string $description)
     {
         $this->db->query('INSERT INTO gallery(user_id, photo, description)
             VALUES(:userId, :photo, :description)');
@@ -26,7 +32,11 @@ class Gallery
         $this->db->execute();
     }
 
-    public function getPhotos($id)
+    /**
+     * Get all user photos from gallery
+     * @param int $id 
+     */
+    public function getPhotos(int $id)
     {
         $this->db->query('SELECT id, photo, description FROM gallery WHERE user_id = :id ORDER BY id DESC');
 
@@ -37,7 +47,12 @@ class Gallery
         return $results;
     }
 
-    public function deletePhoto($userId, $photoId)
+    /**
+     * Delete photo from user gallery
+     * @param int $userId 
+     * @param int $photoId 
+     */
+    public function deletePhoto(int $userId, int $photoId)
     {
         $this->db->query('DELETE FROM gallery WHERE user_id=:userId AND id = :photoId');
 

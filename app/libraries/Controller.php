@@ -8,7 +8,12 @@ namespace App\libraries;
  */
 class Controller
 {
-    public function model($model)
+    /**
+     * Require database model in controller
+     * @param string $model 
+     * @return object
+     */
+    public function model(string $model)
     {
         require '../app/models/' . $model . '.php';
 
@@ -16,7 +21,12 @@ class Controller
         return new $model();
     }
 
-    public function view($view, $data = [])
+    /**
+     * Return html view|page with data
+     * @param string $view 
+     * @param array|null $data 
+     */
+    public function view(string $view, array $data = [])
     {
         if (file_exists('../app/views/' . $view . '.php')) {
             require '../app/views/' . $view . '.php';

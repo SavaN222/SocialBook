@@ -12,6 +12,9 @@ class Login
         $this->db = new Database();
     }
 
+    /**
+     * Login user 
+     */
     public function userLogin()
     {
         $data = LoginValidation::sanitizeData();
@@ -27,7 +30,12 @@ class Login
        return $result;
     }
 
-    public function getUserHashPass()
+    /**
+     * This method will be moved in appclass/LoginValidation
+     * Check if the user input password compact with hash password from database
+     * @return string
+     */
+    public function getUserHashPass(): string
     {
         $data = LoginValidation::sanitizeData();
 

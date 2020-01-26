@@ -14,7 +14,11 @@ class Register
         $this->db = new Database();
     }
 
-    public function create($userData)
+    /**
+     * Create new user
+     * @param array $userData 
+     */
+    public function create(array $userData)
     {
         $this->db->query('INSERT INTO users(fname,lname,gender,email,password,birth_date,profile_pic)
             VALUES(:fname, :lname, :gender, :email, :password, :birth_date, :profilePic)');

@@ -6,10 +6,10 @@ class ImagesValidation
 {
     /**
      * Check if image jpg or png and give image unique name
-     * @param $_FILES $img 
+     * @param array $_FILES['profilePic'] $img 
      * @return string filePath
      */
-    public static function uploadProfilePic($img): string
+    public static function uploadProfilePic(array $img): string
     {
         $filePath = '';
 

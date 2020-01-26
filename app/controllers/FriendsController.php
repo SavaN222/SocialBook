@@ -12,10 +12,11 @@ class FriendsController extends Controller
         $this->friendModel = $this->model('Friend');
     }
 
-    /**
-     * Send friend request
-     */
-    public function sendFriendRequest($id)
+   /**
+    * Send friend request
+    * @param int $id 
+    */
+    public function sendFriendRequest(int $id)
     {
         $this->friendModel->sendFriendRequest($_SESSION['id'], $id);
 
@@ -24,8 +25,9 @@ class FriendsController extends Controller
 
     /**
      * Accept friend request
+     * @param int $id
      */
-    public function accept($id)
+    public function accept(int $id)
     {
         $this->friendModel->acceptFriendRequest($id, $_SESSION['id']);
 
@@ -34,8 +36,9 @@ class FriendsController extends Controller
 
     /**
      * Reject friend request
+     * @param int $id
      */
-    public function decline($id)
+    public function decline(int $id)
     {
         $this->friendModel->declineFriendRequest($id, $_SESSION['id']);
 
@@ -44,8 +47,9 @@ class FriendsController extends Controller
 
     /**
      * Delete user from friend list
+     * @param int $id
      */
-    public function delete($id)
+    public function delete(int $id)
     {
 
         $this->friendModel->declineFriendRequest($_SESSION['id'], $id);

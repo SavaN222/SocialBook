@@ -27,8 +27,9 @@ class GalleryController extends Controller
     
     /**
      * Delete photo from gallery
+     * @param int $id
      */
-    public function delete($id)
+    public function delete(int $id)
     {
         $this->galleryModel->deletePhoto($_SESSION['id'], $id);
 

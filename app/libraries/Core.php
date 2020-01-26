@@ -48,12 +48,13 @@ class Core
      * Get clean url in array [controller, method , params[]];
      * @return array
      */
-    public function getUrl()
+    public function getUrl() : array
     {
         if (isset($_GET['url'])) {
             $url = rtrim($_GET['url'], '/');
             $url = filter_var($url, FILTER_SANITIZE_URL);
             $url = explode('/', $url);
+            
             return $url;
         }
     }

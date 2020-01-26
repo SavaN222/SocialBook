@@ -17,7 +17,12 @@ class Post
         $this->db = new Database();
     }
 
-    public function addPost($id, $description)
+    /**
+     * Add new post
+     * @param int $id 
+     * @param string $description 
+     */
+    public function addPost(int $id, string $description)
     {
         $this->db->query('INSERT INTO posts(user_id, description)
             VALUES(:id, :description)');
@@ -28,17 +33,20 @@ class Post
         $this->db->execute();
     }
 
-    public function getPosts($id)
+    /**
+     * Get ONLY! friends and logged user posts
+     * @param int $id 
+     */
+    public function getPosts(int $id)
     {
         $this->db->query('SELECT count(l.id) as likes, p.description, p.user_id, p.id, p.date_added, u.fname, u.lname, u.profile_pic FROM (( posts p JOIN users u ON
         p.user_id = u.id)
         LEFT JOIN likes l ON p.id = l.post_id)
-        JOIN friends f ON (p.user_id = f.friend_id OR p.user_id = f.user_id)
-        WHERE (f.user_id = :id OR f.friend_id = :id) AND f.status = "2"
+        JOIN friends f ON (p.user_id = f.friend_id OR p.user_id = f.user_id) OR p.user_id = :id
+        WHERE p.user_id = :id OR (f.user_id = :id OR f.friend_id = :id) AND f.status = "2" OR p.user_id = :id
          GROUP BY p.id
          ORDER BY date_added DESC LIMIT 0, 5');
 
-        $this->db->bind(':id', $id);
         $this->db->bind(':id', $id);
 
         $results = $this->db->getAll();
@@ -46,7 +54,11 @@ class Post
         return $results;
     }
 
-    public function getLikesForPost($postId)
+    /**
+     * Get number of likes for post
+     * @param int $postId 
+     */
+    public function getLikesForPost(int $postId)
     {
         $this->db->query('SELECT l.post_id, count(l.id) as likes FROM likes l
             WHERE post_id = :postId
@@ -59,7 +71,11 @@ class Post
         return $result;
     }
 
-    public function getUserPosts($id)
+    /**
+     * Get ONLY logged user post for profile post section
+     * @param int $id 
+     */
+    public function getUserPosts(int $id)
     {
         $this->db->query('SELECT count(l.id) as likes, p.description, p.user_id, p.id, p.date_added, u.fname, u.lname, u.profile_pic FROM (( posts p JOIN users u ON
             p.user_id = u.id)
@@ -75,7 +91,13 @@ class Post
         return $results;
     }
 
-    public function addComment($userId, $postId, $description)
+    /**
+     * Add new comment for post
+     * @param int $userId 
+     * @param int $postId 
+     * @param string $description 
+     */
+    public function addComment(int $userId, int $postId, string $description)
     {
         $this->db->query('INSERT INTO comments(user_id, post_id, description)
             VALUES(:userId, :postId, :description)');
@@ -87,7 +109,11 @@ class Post
         $this->db->execute();
     }
 
-    public function getCommentsForPosts($id)
+    /**
+     * Get comment and user info for each post
+     * @param int $id 
+     */
+    public function getCommentsForPosts(int $id)
     {
         $this->db->query('SELECT u.fname, u.lname, u.profile_pic, c.description, c.date_added, c.user_id FROM comments c JOIN users u ON c.user_id = u.id 
             WHERE post_id=:id 
@@ -100,7 +126,12 @@ class Post
         return $results;
     }
 
-    public function deletePost($userId, $postId)
+    /**
+     * The user deletes his post
+     * @param int $userId 
+     * @param int $postId 
+     */
+    public function deletePost(int $userId, int $postId)
     {
         $this->db->query('DELETE FROM posts WHERE user_id=:userId AND id=:postId');
 
@@ -110,7 +141,13 @@ class Post
         $this->db->execute();
     }
 
-    public function updatePost($userId, $postId, $description)
+    /**
+     * The user update his post
+     * @param int $userId 
+     * @param int $postId 
+     * @param string $description 
+     */
+    public function updatePost(int $userId, int $postId, string $description)
     {
         $this->db->query('UPDATE posts SET description=:description WHERE user_id=:userId and id=:postId');
 
@@ -121,7 +158,12 @@ class Post
         $this->db->execute();
     }
 
-    public function likePost($userId, $postId)
+    /**
+     * Like post
+     * @param int $userId 
+     * @param int $postId 
+     */
+    public function likePost(int $userId, int $postId)
     {
         $this->db->query('INSERT INTO likes(user_id, post_id) VALUES(:userId, :postId)');
 
@@ -131,7 +173,12 @@ class Post
         $this->db->execute();
     }
 
-    public function dislikePost($userId, $postId)
+    /**
+     * Dislike post
+     * @param int $userId 
+     * @param int $postId 
+     */
+    public function dislikePost(int $userId, int $postId)
     {
         $this->db->query('DELETE FROM likes WHERE user_id = :userId AND post_id = :postId');
 

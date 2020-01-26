@@ -48,8 +48,9 @@ class PostsController extends Controller
 
     /**
      * User delete post
+     * @param int $id
      */
-    public function deletePost($id)
+    public function deletePost(int $id)
     {
         $this->postModel->deletePost($_SESSION['id'], $id);
 
@@ -58,8 +59,9 @@ class PostsController extends Controller
 
     /**
      * Edit user profile
+     * @param int $id
      */
-     public function editProfile($id) 
+     public function editProfile(int $id) 
      {
         $userPosts = $this->postModel->getUserPosts($id);
         $countFriendRequest = $this->friendModel->countFriendRequest($_SESSION['id']);
@@ -75,8 +77,9 @@ class PostsController extends Controller
 
     /**
      * Update User post
+     * @param int $id
      */
-     public function updatePost($id)
+     public function updatePost(int $id)
     {
         $description = PostsValidation::sanitizeDescription();
 

@@ -16,9 +16,11 @@ class Friend
     }
 
     /**
-     * Send user friend request 
+     * Send friend request to user
+     * @param int $userId 
+     * @param int $friendId 
      */
-    public function sendFriendRequest($userId, $friendId)
+    public function sendFriendRequest(int $userId, int $friendId)
     {
         $this->db->query('INSERT INTO friends(user_id, friend_id, status) 
             VALUES(:userId, :friendId, :status)');
@@ -32,8 +34,9 @@ class Friend
 
     /**
      * Check if user have friend requests and return all friend request.
+     * @param int $id
      */
-    public function checkForRequest($id)
+    public function checkForRequest(int $id)
     {
         $this->db->query('SELECT f.user_id, f.status, u.id, u.fname, u.lname, u.profile_pic FROM friends f
         JOIN users u ON f.user_id = u.id
@@ -49,8 +52,9 @@ class Friend
 
     /**
      * Count number of 'on hold' friend requests
+     * @param int $id
      */
-    public function countFriendRequest($id)
+    public function countFriendRequest(int $id)
     {
         $this->db->query('SELECT count(id) as total FROM friends 
             WHERE friend_id = :id AND status = :status ' );
@@ -63,7 +67,12 @@ class Friend
         return $result;
     }
 
-    public function acceptFriendRequest($senderId, $recipientId )
+    /**
+     * Accept Friend Request
+     * @param id $senderId 
+     * @param id $recipientId 
+     */
+    public function acceptFriendRequest(int $senderId, int $recipientId)
     {
         $this->db->query('UPDATE friends SET status = :status WHERE
         user_id = :senderId AND friend_id = :recipientId ');
@@ -75,7 +84,12 @@ class Friend
         $this->db->execute();
     }
 
-    public function declineFriendRequest($senderId, $recipientId )
+    /**
+     * Reject friend request
+     * @param int $senderId 
+     * @param int $recipientId 
+     */
+    public function declineFriendRequest(int $senderId, int $recipientId )
     {
         $this->db->query('DELETE FROM friends WHERE
         user_id = :senderId AND friend_id = :recipientId ');
@@ -86,7 +100,13 @@ class Friend
         $this->db->execute();
     }
 
-    public function friendStatus($senderId, $recipientId)
+    /**
+     * Check logged in user and profile visit user friend Status
+     * [0=default, 1=on hold, 2 = friends]
+     * @param int $senderId 
+     * @param int $recipientId 
+     */
+    public function friendStatus(int $senderId, int $recipientId)
     {
         $this->db->query('SELECT status, user_id FROM friends WHERE
             (user_id = :senderId AND friend_id = :recipientId) OR
@@ -100,6 +120,10 @@ class Friend
         return $result;
     }
 
+    /**
+     * Suggest users from database they are not friend
+     * @param int $userId 
+     */
     public function friendSuggestions($userId)
     {
         $this->db->query('SELECT u.id, u.fname, u.lname, u.profile_pic FROM users u 
@@ -113,5 +137,4 @@ class Friend
 
         return $results;
     }
-
 }

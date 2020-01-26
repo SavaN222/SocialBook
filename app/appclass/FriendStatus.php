@@ -10,7 +10,7 @@ class FriendStatus
     * if user send request - text = on Hold
     * if user get friend request - text = accept friend
     * if both of users are friend - text = delete friend
-    * @param obj $status 
+    * @param object $status 
     * @return array
     */
     public static function friendStatus($status): array

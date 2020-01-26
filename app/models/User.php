@@ -16,7 +16,11 @@ class User
         $this->db = new Database();
     }
 
-     public function getUserInfo($id)
+    /**
+     * Get user info
+     * @param int $id 
+     */
+     public function getUserInfo(int $id)
      {
         $this->db->query('SELECT * FROM users WHERE id=:id');
 
@@ -27,7 +31,12 @@ class User
         return $result;
      } 
 
-    public function updateUser($userData, $id)
+     /**
+      * Update user info
+      * @param array $userData 
+      * @param int $id 
+      */
+    public function updateUser(array $userData, int $id)
     {
         $this->db->query('UPDATE users SET fname=:fname, lname=:lname, birth_date=:birthDate, password=:password, profile_pic=:profilePic WHERE id=:id');
 
@@ -41,7 +50,11 @@ class User
         $this->db->execute();
     }
 
-    public function deleteUser($id)
+    /**
+     * User delete his profile
+     * @param int $id 
+     */
+    public function deleteUser(int $id)
     {
         $this->db->query('DELETE FROM users WHERE id = :id');
 
@@ -50,7 +63,12 @@ class User
         $this->db->execute();
     }
 
-    public function deleteComments($id)
+    /**
+     * If user delete his profile, this method will be called
+     * Delete user comments from database.
+     * @param int $id 
+     */
+    public function deleteComments(int $id)
     {
         $this->db->query('DELETE FROM comments WHERE user_id = :id');
 
@@ -59,7 +77,12 @@ class User
         $this->db->execute();
     }
 
-    public function deleteFriends($id)
+     /**
+     * If user delete his profile, this method will be called
+     * Delete user friendship from database.
+     * @param int $id 
+     */
+    public function deleteFriends(int $id)
     {
         $this->db->query('DELETE FROM friends WHERE user_id = :id OR friend_id = :id');
 
@@ -68,7 +91,12 @@ class User
         $this->db->execute();
     }
 
-    public function deleteLikes($id)
+     /**
+     * If user delete his profile, this method will be called
+     * Delete user likes from database.
+     * @param int $id 
+     */
+    public function deleteLikes(int $id)
     {
         $this->db->query('DELETE FROM likes WHERE user_id = :id');
 
@@ -77,7 +105,12 @@ class User
         $this->db->execute();
     }
 
-    public function deleteGallery($id)
+     /**
+     * If user delete his profile, this method will be called
+     * Delete user gallery from database.
+     * @param int $id 
+     */
+    public function deleteGallery(int $id)
     {
         $this->db->query('DELETE FROM gallery WHERE user_id = :id');
 
@@ -86,7 +119,12 @@ class User
         $this->db->execute();
     }
 
-    public function deletePosts($id)
+     /**
+     * If user delete his profile, this method will be called
+     * Delete user posts from database.
+     * @param int $id 
+     */
+    public function deletePosts(int $id)
     {
         $this->db->query('DELETE FROM posts WHERE user_id = :id');
 
@@ -95,8 +133,12 @@ class User
         $this->db->execute();
     }
 
-
-    public function searchUsers($fname, $lname)
+    /**
+     * Search users from network
+     * @param string $fname 
+     * @param string $lname 
+     */
+    public function searchUsers(string $fname, string $lname)
     {
         $this->db->query('SELECT * FROM users WHERE fname LIKE ? AND lname LIKE ?');
 
