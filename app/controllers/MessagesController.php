@@ -23,9 +23,11 @@ class MessagesController extends Controller
     {
         $countFriendRequest = $this->friendModel->countFriendRequest($_SESSION['id']);
         $friends = $this->friendModel->userFriends($_SESSION['id']);
+        $friendRequests = $this->friendModel->checkForRequest($_SESSION['id']);
 
         $data = [
             'countFriendRequest' => $countFriendRequest,
+            'friendRequests' => $friendRequests,
             'friends' => $friends
         ];
 
@@ -42,11 +44,12 @@ class MessagesController extends Controller
         $countFriendRequest = $this->friendModel->countFriendRequest($_SESSION['id']);
         $friends = $this->friendModel->userFriends($_SESSION['id']);
         $friendInfo = $this->userModel->getUserInfo($id);
-
+        $friendRequests = $this->friendModel->checkForRequest($_SESSION['id']);
 
         $data = [
             'messages' => $messages,
             'countFriendRequest' => $countFriendRequest,
+            'friendRequests' => $friendRequests,
             'friends' => $friends,
             'friendInfo' => $friendInfo
         ];

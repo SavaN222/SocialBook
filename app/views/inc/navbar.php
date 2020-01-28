@@ -64,6 +64,9 @@
           </div>
         </div>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="<?php echo URLROOT; ?>/games/index"><i class="fas fa-gamepad nav-icons"></i></a>
+      </li>
       <li class="nav-item left-divider ml-2">
         <div class="dropdown show">
   <a class="dropdown text-white mr-5" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
