@@ -16,6 +16,9 @@ class GamesController extends Controller
         $this->friendModel = $this->model('Friend');
     }
     
+    /**
+     * Display game
+     */
     public function index()
     {
         $friendRequest = $this->friendModel->checkForRequest($_SESSION['id']);
