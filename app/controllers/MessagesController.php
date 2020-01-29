@@ -10,6 +10,7 @@ class MessagesController extends Controller
         $this->friendModel = $this->model('Friend');
         $this->messageModel = $this->model('Message');
         $this->userModel = $this->model('User');
+        $this->postModel = $this->model('Post');
          if (!isLoggedIn()) {
             redirect('login/login');
         }
@@ -24,11 +25,15 @@ class MessagesController extends Controller
         $countFriendRequest = $this->friendModel->countFriendRequest($_SESSION['id']);
         $friends = $this->friendModel->userFriends($_SESSION['id']);
         $friendRequests = $this->friendModel->checkForRequest($_SESSION['id']);
+        $commentsNotifications = $this->postModel->commentsNotifications($_SESSION['id']);
+        $countComments = $this->postModel->countCommentsNotifications($_SESSION['id']);
 
         $data = [
             'countFriendRequest' => $countFriendRequest,
             'friendRequests' => $friendRequests,
-            'friends' => $friends
+            'friends' => $friends,
+            'commentsNotifications' => $commentsNotifications,
+            'notification' => $countComments
         ];
 
         return $this->view('messages/index', $data);
@@ -45,13 +50,17 @@ class MessagesController extends Controller
         $friends = $this->friendModel->userFriends($_SESSION['id']);
         $friendInfo = $this->userModel->getUserInfo($id);
         $friendRequests = $this->friendModel->checkForRequest($_SESSION['id']);
+        $commentsNotifications = $this->postModel->commentsNotifications($_SESSION['id']);
+        $countComments = $this->postModel->countCommentsNotifications($_SESSION['id']);
 
         $data = [
             'messages' => $messages,
             'countFriendRequest' => $countFriendRequest,
             'friendRequests' => $friendRequests,
             'friends' => $friends,
-            'friendInfo' => $friendInfo
+            'friendInfo' => $friendInfo,
+            'commentsNotifications' => $commentsNotifications,
+            'notification' => $countComments
         ];
 
         return $this->view('messages/chat', $data);

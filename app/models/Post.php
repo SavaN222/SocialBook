@@ -12,6 +12,9 @@ class Post
 {
     private $db;
 
+    private const UNREAD = '0';
+    private const READ = '1';
+
     public function __construct()
     {
         $this->db = new Database();
@@ -110,15 +113,17 @@ class Post
      * Add new comment for post
      * @param int $userId 
      * @param int $postId 
+     * @param int $postUser
      * @param string $description 
      */
-    public function addComment(int $userId, int $postId, string $description)
+    public function addComment(int $userId, int $postId, int $postUser, string $description)
     {
-        $this->db->query('INSERT INTO comments(user_id, post_id, description)
-            VALUES(:userId, :postId, :description)');
+        $this->db->query('INSERT INTO comments(user_id, post_id, post_user, description)
+            VALUES(:userId, :postId, :postUser, :description)');
 
         $this->db->bind(':userId', $userId);
         $this->db->bind(':postId', $postId);
+        $this->db->bind(':postUser', $postUser);
         $this->db->bind(':description', $description);
 
         $this->db->execute();
@@ -199,6 +204,56 @@ class Post
 
         $this->db->bind(':userId', $userId);
         $this->db->bind(':postId', $postId);
+
+        $this->db->execute();
+    }
+
+    /**
+     * Get new comments for user post
+     * @param int $userId 
+     */
+    public function commentsNotifications(int $userId)
+    {
+        $this->db->query('SELECT u.id, u.fname, u.lname, u.profile_pic, c.description, c.id as commentId, c.post_id 
+            FROM comments c 
+            JOIN users u ON c.user_id = u.id
+            WHERE (c.post_user = :userId AND c.status = :status) AND c.user_id <> :userId');
+
+        $this->db->bind(':userId', $userId);
+        $this->db->bind(':status', self::UNREAD);
+
+        $results = $this->db->getAll();
+
+        return $results;
+    }
+
+    /**
+     * Count all new comments for user post
+     * @param int $userId 
+     */
+    public function countCommentsNotifications(int $userId)
+    {
+        $this->db->query('SELECT count(id) as totalComments FROM comments
+            WHERE (post_user = :userId AND status = :status) AND user_id <> :userId');
+
+        $this->db->bind(':userId', $userId);
+        $this->db->bind(':status', self::UNREAD);
+
+        $result = $this->db->getSingle();
+
+        return $result;
+    }
+
+    /**
+     * Mark comment as read, set status to 1(read)
+     * @param int $commentId 
+     */
+    public function readComment(int $commentId)
+    {
+        $this->db->query('UPDATE comments SET status = :status WHERE id = :commentId');
+
+        $this->db->bind(':status', self::READ);
+        $this->db->bind(':commentId', $commentId);
 
         $this->db->execute();
     }

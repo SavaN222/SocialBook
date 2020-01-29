@@ -43,7 +43,7 @@
                 <div class="col-lg-12">
                     <div class="friend_info border border-primary rounded">
                     <div class="card-header d-flex justify-content-between">
-                    <div class="friend_data">
+                    <div id="post<?php echo $data['post']->id; ?>" class="friend_data">
                     <img class="rounded-circle post-profile-pic p-2" src="<?php echo URLROOT; ?>/<?php echo $data['post']->profile_pic; ?>" alt=""> 
                     <strong class="text-info">
                         <a href="<?php echo URLROOT; ?>/pages/profile/<?php echo $data['post']->user_id; ?>">
@@ -83,6 +83,9 @@
                                     <div id="commentsOutput<?php echo $data['post']->id;?>">
                                     </div>
                                 <form class="d-flex justify-content-between commentForm">
+                                    <input id="postUser<?php echo $data['post']->id;?>" 
+                                    type="hidden" name="postUser" 
+                                    value="<?php echo $data['post']->user_id;?>">
                                     <textarea id="commentText<?php echo $data['post']->id; ?>" name="description" class="form-control description" 
                                     placeholder="<?php echo $_SESSION['fname'] . ' ' . $_SESSION['lname']; ?> write a comment..."></textarea>
                                     <button type="submit" class="btn sendcom" name="postId" value="<?php echo $data['post']->id;?>">

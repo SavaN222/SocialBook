@@ -14,6 +14,7 @@ class GamesController extends Controller
         }
 
         $this->friendModel = $this->model('Friend');
+        $this->postModel = $this->model('Post');
     }
     
     /**
@@ -23,10 +24,14 @@ class GamesController extends Controller
     {
         $friendRequest = $this->friendModel->checkForRequest($_SESSION['id']);
         $countFriendRequest = $this->friendModel->countFriendRequest($_SESSION['id']);
+        $commentsNotifications = $this->postModel->commentsNotifications($_SESSION['id']);
+        $countComments = $this->postModel->countCommentsNotifications($_SESSION['id']);
 
         $data = [
             'friendRequests' => $friendRequest,
-            'countFriendRequest' => $countFriendRequest
+            'countFriendRequest' => $countFriendRequest,
+            'commentsNotifications' => $commentsNotifications,
+            'notification' => $countComments
         ];
 
         return $this->view('games/index', $data);

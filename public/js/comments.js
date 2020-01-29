@@ -90,8 +90,9 @@ function addComment(e)
     var postId = this.value;
 
     var commentText = document.getElementById('commentText' + postId).value;
+    var postUser = document.getElementById('postUser' + postId).value;
 
-    var params = "description="+commentText+"&postId="+postId;
+    var params = "description="+commentText+"&postId="+postId+"&postUser="+postUser;
 
     var xhr = new XMLHttpRequest();
 

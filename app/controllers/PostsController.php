@@ -33,7 +33,7 @@ class PostsController extends Controller
     {
         $description = PostsValidation::sanitizeDescription();
 
-        $this->postModel->addComment($_SESSION['id'], $_POST['postId'], $description);
+        $this->postModel->addComment($_SESSION['id'], $_POST['postId'], $_POST['postUser'], $description);
     }
 
     /**
@@ -112,5 +112,16 @@ class PostsController extends Controller
         $likes = $this->postModel->getLikesForPost($_GET['postId']);
 
         echo json_encode($likes);
+    }
+
+    /**
+     * Set comment status to 1(read), this clears notification...
+     * @param int $commentId 
+     */
+    public function readComment($commentId)
+    {
+        $this->postModel->readComment($commentId);
+
+        return redirect('pages/index');
     }
 }

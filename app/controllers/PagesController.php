@@ -32,6 +32,8 @@ class PagesController extends Controller
         $friendSuggestions = $this->friendModel->friendSuggestions($_SESSION['id']);
         $totalPosts = $this->postModel->numberOfUserPosts($_SESSION['id']);
         $totalFriends = $this->friendModel->totalFriend($_SESSION['id']);
+        $commentsNotifications = $this->postModel->commentsNotifications($_SESSION['id']);
+        $countComments = $this->postModel->countCommentsNotifications($_SESSION['id']);
 
         $data = [
             'posts' => $posts,
@@ -39,7 +41,9 @@ class PagesController extends Controller
             'countFriendRequest' => $countFriendRequest,
             'friendSuggestions' => $friendSuggestions,
             'totalPosts' => $totalPosts,
-            'totalFriends' => $totalFriends
+            'totalFriends' => $totalFriends,
+            'commentsNotifications' => $commentsNotifications,
+            'notification' => $countComments
         ];
 
         return $this->view('pages/home', $data);
@@ -57,6 +61,8 @@ class PagesController extends Controller
         $countFriendRequest = $this->friendModel->countFriendRequest($_SESSION['id']);
         $getFriendStatus = $this->friendModel->friendStatus($_SESSION['id'], $id);
         $friendStatus = FriendStatus::friendStatus($getFriendStatus);
+        $commentsNotifications = $this->postModel->commentsNotifications($_SESSION['id']);
+        $countComments = $this->postModel->countCommentsNotifications($_SESSION['id']);
 
 
         if ($id == $_SESSION['id']) {
@@ -67,6 +73,8 @@ class PagesController extends Controller
                 'gallery' => $userGallery,
                 'friendRequests' => $friendRequest,
                 'countFriendRequest' => $countFriendRequest,
+                'commentsNotifications' => $commentsNotifications,
+                'notification' => $countComments,
                 'totalFriends' => $totalFriends
         ];
             return $this->view('pages/myprofile', $data);
@@ -85,6 +93,8 @@ class PagesController extends Controller
                 'gallery' => $userGallery,
                 'friendRequests' => $friendRequest,
                 'countFriendRequest' => $countFriendRequest,
+                'commentsNotifications' => $commentsNotifications,
+                'notification' => $countComments,
                 'status' => $friendStatus,
                 'totalFriends' => $totalFriends
             ];

@@ -31,9 +31,39 @@
       <li class="nav-item">
         <a class="nav-link" href="<?php echo URLROOT; ?>/messages/index"><i class="fas fa-envelope nav-icons"></i></a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#"><i class="fas fa-globe-americas nav-icons"></i></a>
+
+        <li class="nav-item">
+        <div class="dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="friendDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-globe-americas nav-icons">
+          </i><span class="badge badge-light">
+            <?php echo $data['notification']->totalComments; ?>
+          </span>
+        </a>
+          <div class="dropdown-menu" aria-labelledby="friendDropdown">
+            <?php foreach ($data['commentsNotifications'] as $data['commentsNotification']): ?>
+              <a class="dropdown-item mr-5" 
+              href="#post<?php echo $data['commentsNotification']->post_id; ?>">
+             <img class="img-thumbnail friendRequest-img" src="<?php echo URLROOT;?>/<?php echo $data['commentsNotification']->profile_pic; ?>"> 
+             <span><?php echo $data['commentsNotification']->fname . ' ' . $data['commentsNotification']->lname; ?> wrote an comment:</span>
+             <p>Comment: <?php echo $data['commentsNotification']->description; ?></p>
+            </a>
+            <form>
+              <div class="form-group d-flex justify-content-center">
+                <button class="btn btn-info btn-sm">
+                <a class="text-white" href="<?php echo URLROOT; ?>/posts/readComment/<?php echo $data['commentsNotification']->commentId ?>">Mark as Read</a>
+              </button>
+              </div>
+            </form>
+            <hr>
+            <?php endforeach; ?>
+          </div>
+        </div>
       </li>
+
+
+
+
       <li class="nav-item">
         <div class="dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="friendDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
