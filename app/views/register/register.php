@@ -2,6 +2,10 @@
 <div class="container">
 <div class="registration-box">
     <h1 class="text-center secondary-color">Registration</h1>
+    <div class="alert alert-info" role="alert">
+    Like others social networks we are going to sell your data, <strong>BUT!</strong>
+    you will get 10%.
+    </div>
     <div class="row">
         <div class="col-lg-6 right-divider mb-5">
            <img class="w-100 h-100" src="<?php echo URLROOT; ?>/images/registration/registration.jpg" alt="">
