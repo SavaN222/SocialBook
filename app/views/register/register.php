@@ -76,13 +76,13 @@
                     <input type="email" class="form-control" name="email"
                     value="<?php echo isset($data['userData']['email']) ? 
                       $data['userData']['email'] : '';  ?>">
-                     <!-- Email Errors Check -->
+                </div>
+                 <!-- Email Errors Check -->
                         <?php if (!empty($data['errors']['errorEmail'])) { ?>
                         <div class="alert alert-warning" role='alert'>
                         <?php echo $data['errors']['errorEmail']; ?>
                         </div>
                         <?php } ?>
-                </div>
 
                 <div class="form-group">
                     <label for="password">Password: </label>
