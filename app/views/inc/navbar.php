@@ -106,7 +106,6 @@
   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
     <a class="dropdown-item" href="<?php echo URLROOT; ?>/pages/profile/<?php echo $_SESSION['id']; ?>">Profile</a>
     <a class="dropdown-item" href="<?php echo URLROOT; ?>/login/logoutUser">Logout</a>
-    <a class="dropdown-item" href="#">Something else here</a>
 </div>
 </div>
 </li>
