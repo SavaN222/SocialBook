@@ -12,6 +12,7 @@ class UsersController extends Controller
     {
         $this->userModel = $this->model('User');
         $this->friendModel = $this->model('Friend');
+        $this->postModel = $this->model('Post');
     }
 
     /**
@@ -20,10 +21,14 @@ class UsersController extends Controller
     public function edit()
     {
         $countFriendRequest = $this->friendModel->countFriendRequest($_SESSION['id']);
+        $commentsNotifications = $this->postModel->commentsNotifications($_SESSION['id']);
+        $countComments = $this->postModel->countCommentsNotifications($_SESSION['id']);
 
          if (!isset($_POST['submit'])) {
             $data = [
-                'countFriendRequest' => $countFriendRequest
+                'countFriendRequest' => $countFriendRequest,
+                'commentsNotifications' => $commentsNotifications,
+                'notification' => $countComments
             ];
 
             return $this->view('pages/editprofile', $data);
@@ -40,7 +45,9 @@ class UsersController extends Controller
             $data = [
                 'errors' => $errors,
                 'userData' => $userData,
-                'countFriendRequest' => $countFriendRequest
+                'countFriendRequest' => $countFriendRequest,
+                'commentsNotifications' => $commentsNotifications,
+                'notification' => $countComments
             ];
         return $this->view('pages/editprofile', $data);
         }
