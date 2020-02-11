@@ -1,4 +1,4 @@
-# SocialBook UNFINISHED YET, PHP FROM SCRATCH
-SocialBook MVC,OOP.
-Every Day i work on this project.
+# YOUTUBE PREVIEW:
+## https://youtu.be/n9dGN8wFfCY
+
 ### For all users password is test123
